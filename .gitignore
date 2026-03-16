@@ -8,6 +8,7 @@ client_secrets.json.json
 
 # Media
 final_videos/
+thumbnails/
 temp_*.mp4
 
 # Python
