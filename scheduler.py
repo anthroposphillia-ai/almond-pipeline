@@ -43,6 +43,7 @@ def run_script(script_name):
 def job():
     """전체 파이프라인을 순차적으로 실행하는 메인 작업입니다."""
     pipeline = [
+        "track_animals.py",
         "fetch_animals.py",
         "generate_prompts.py",
         "generate_thumbnail.py",
@@ -62,11 +63,14 @@ def job():
     else:
         log("=== [전체 파이프라인 성공적으로 완료됨] ===")
 
-# 매일 오전 09:00에 실행 예약
+# 매일 오전 08:50에 상태 추적 실행
+schedule.every().day.at("08:50").do(lambda: run_script("track_animals.py"))
+
+# 매일 오전 09:00에 전체 파이프라인 실행 예약
 schedule.every().day.at("09:00").do(job)
 
 if __name__ == "__main__":
-    log("파이프라인 스케줄러 시작. 매일 09:00에 실행됩니다.")
+    log("파이프라인 스케줄러 시작. 매일 08:50(상태 체크) 및 09:00(전체 실행)에 작동합니다.")
     
     # 시작 시 테스트를 위해 즉시 실행하고 싶다면 아래 주석을 해제하세요
     # job()
