@@ -1,6 +1,15 @@
 # Environments
 .env
 
+# Google API Secrets
+client_secrets.json
+token.pickle
+client_secrets.json.json
+
+# Media
+final_videos/
+temp_*.mp4
+
 # Python
 __pycache__/
 *.py[cod]
