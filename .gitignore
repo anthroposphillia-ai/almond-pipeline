@@ -11,6 +11,9 @@ final_videos/
 thumbnails/
 temp_*.mp4
 
+# Logs
+logs/
+
 # Python
 __pycache__/
 *.py[cod]
