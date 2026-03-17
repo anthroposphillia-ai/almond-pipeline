@@ -1,66 +1,6 @@
 [
     {
-        "animal_id": "447512202600284",
-        "D-day": 3,
-        "breed": "[개] 믹스견",
-        "총_생성된_프롬프트_수": 12,
-        "prompts": [
-            "A dog staring silently into the camera, close-up shot of the eyes, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog slowly turning its head, close-up shot of the eyes, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog lying down comfortably, close-up shot of the eyes, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog staring silently into the camera, full body shot, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog slowly turning its head, full body shot, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog lying down comfortably, full body shot, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog staring silently into the camera, profile shot from the side, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog slowly turning its head, profile shot from the side, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog lying down comfortably, profile shot from the side, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog staring silently into the camera, wide full body shot showing the shelter environment, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog slowly turning its head, wide full body shot showing the shelter environment, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog lying down comfortably, wide full body shot showing the shelter environment, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic"
-        ]
-    },
-    {
-        "animal_id": "411306202600126",
-        "D-day": 3,
-        "breed": "[고양이] 한국 고양이",
-        "총_생성된_프롬프트_수": 12,
-        "prompts": [
-            "A cat staring silently into the camera, close-up shot of the eyes, morning natural light, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
-            "A cat slowly turning its head, close-up shot of the eyes, evening shadows, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
-            "A cat lying down comfortably, close-up shot of the eyes, indoor fluorescent lighting, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
-            "A cat staring silently into the camera, full body shot, morning natural light, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
-            "A cat slowly turning its head, full body shot, evening shadows, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
-            "A cat lying down comfortably, full body shot, indoor fluorescent lighting, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
-            "A cat staring silently into the camera, profile shot from the side, morning natural light, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
-            "A cat slowly turning its head, profile shot from the side, evening shadows, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
-            "A cat lying down comfortably, profile shot from the side, indoor fluorescent lighting, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
-            "A cat staring silently into the camera, wide full body shot showing the shelter environment, morning natural light, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
-            "A cat slowly turning its head, wide full body shot showing the shelter environment, evening shadows, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
-            "A cat lying down comfortably, wide full body shot showing the shelter environment, indoor fluorescent lighting, handheld documentary, natural lighting, shelter cat, emotional, cinematic"
-        ]
-    },
-    {
-        "animal_id": "447512202600283",
-        "D-day": 3,
-        "breed": "[개] 믹스견",
-        "총_생성된_프롬프트_수": 12,
-        "prompts": [
-            "A dog staring silently into the camera, close-up shot of the eyes, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog slowly turning its head, close-up shot of the eyes, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog lying down comfortably, close-up shot of the eyes, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog staring silently into the camera, full body shot, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog slowly turning its head, full body shot, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog lying down comfortably, full body shot, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog staring silently into the camera, profile shot from the side, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog slowly turning its head, profile shot from the side, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog lying down comfortably, profile shot from the side, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog staring silently into the camera, wide full body shot showing the shelter environment, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog slowly turning its head, wide full body shot showing the shelter environment, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
-            "A dog lying down comfortably, wide full body shot showing the shelter environment, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic"
-        ]
-    },
-    {
-        "animal_id": "447507202600039",
+        "animal_id": "448533202600065",
         "D-day": 3,
         "breed": "[개] 말티즈",
         "총_생성된_프롬프트_수": 12,
@@ -80,8 +20,268 @@
         ]
     },
     {
-        "animal_id": "447507202600035",
+        "animal_id": "448533202600064",
         "D-day": 3,
+        "breed": "[개] 믹스견",
+        "총_생성된_프롬프트_수": 12,
+        "prompts": [
+            "A dog staring silently into the camera, close-up shot of the eyes, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, close-up shot of the eyes, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, close-up shot of the eyes, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, full body shot, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, full body shot, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, full body shot, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, profile shot from the side, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, profile shot from the side, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, profile shot from the side, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, wide full body shot showing the shelter environment, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, wide full body shot showing the shelter environment, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, wide full body shot showing the shelter environment, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic"
+        ]
+    },
+    {
+        "animal_id": "447512202600302",
+        "D-day": 3,
+        "breed": "[개] 믹스견",
+        "총_생성된_프롬프트_수": 12,
+        "prompts": [
+            "A dog staring silently into the camera, close-up shot of the eyes, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, close-up shot of the eyes, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, close-up shot of the eyes, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, full body shot, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, full body shot, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, full body shot, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, profile shot from the side, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, profile shot from the side, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, profile shot from the side, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, wide full body shot showing the shelter environment, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, wide full body shot showing the shelter environment, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, wide full body shot showing the shelter environment, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic"
+        ]
+    },
+    {
+        "animal_id": "447512202600301",
+        "D-day": 3,
+        "breed": "[개] 믹스견",
+        "총_생성된_프롬프트_수": 12,
+        "prompts": [
+            "A dog staring silently into the camera, close-up shot of the eyes, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, close-up shot of the eyes, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, close-up shot of the eyes, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, full body shot, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, full body shot, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, full body shot, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, profile shot from the side, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, profile shot from the side, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, profile shot from the side, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, wide full body shot showing the shelter environment, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, wide full body shot showing the shelter environment, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, wide full body shot showing the shelter environment, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic"
+        ]
+    },
+    {
+        "animal_id": "447512202600300",
+        "D-day": 3,
+        "breed": "[개] 믹스견",
+        "총_생성된_프롬프트_수": 12,
+        "prompts": [
+            "A dog staring silently into the camera, close-up shot of the eyes, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, close-up shot of the eyes, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, close-up shot of the eyes, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, full body shot, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, full body shot, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, full body shot, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, profile shot from the side, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, profile shot from the side, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, profile shot from the side, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, wide full body shot showing the shelter environment, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, wide full body shot showing the shelter environment, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, wide full body shot showing the shelter environment, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic"
+        ]
+    },
+    {
+        "animal_id": "447512202600293",
+        "D-day": 3,
+        "breed": "[개] 믹스견",
+        "총_생성된_프롬프트_수": 12,
+        "prompts": [
+            "A dog staring silently into the camera, close-up shot of the eyes, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, close-up shot of the eyes, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, close-up shot of the eyes, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, full body shot, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, full body shot, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, full body shot, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, profile shot from the side, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, profile shot from the side, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, profile shot from the side, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, wide full body shot showing the shelter environment, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, wide full body shot showing the shelter environment, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, wide full body shot showing the shelter environment, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic"
+        ]
+    },
+    {
+        "animal_id": "447507202600041",
+        "D-day": 3,
+        "breed": "[개] 푸들",
+        "총_생성된_프롬프트_수": 12,
+        "prompts": [
+            "A dog staring silently into the camera, close-up shot of the eyes, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, close-up shot of the eyes, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, close-up shot of the eyes, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, full body shot, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, full body shot, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, full body shot, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, profile shot from the side, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, profile shot from the side, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, profile shot from the side, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, wide full body shot showing the shelter environment, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, wide full body shot showing the shelter environment, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, wide full body shot showing the shelter environment, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic"
+        ]
+    },
+    {
+        "animal_id": "442429202600103",
+        "D-day": 3,
+        "breed": "[개] 믹스견",
+        "총_생성된_프롬프트_수": 12,
+        "prompts": [
+            "A dog staring silently into the camera, close-up shot of the eyes, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, close-up shot of the eyes, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, close-up shot of the eyes, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, full body shot, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, full body shot, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, full body shot, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, profile shot from the side, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, profile shot from the side, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, profile shot from the side, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, wide full body shot showing the shelter environment, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, wide full body shot showing the shelter environment, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, wide full body shot showing the shelter environment, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic"
+        ]
+    },
+    {
+        "animal_id": "447507202600040",
+        "D-day": 3,
+        "breed": "[개] 믹스견",
+        "총_생성된_프롬프트_수": 12,
+        "prompts": [
+            "A dog staring silently into the camera, close-up shot of the eyes, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, close-up shot of the eyes, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, close-up shot of the eyes, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, full body shot, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, full body shot, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, full body shot, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, profile shot from the side, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, profile shot from the side, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, profile shot from the side, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, wide full body shot showing the shelter environment, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, wide full body shot showing the shelter environment, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, wide full body shot showing the shelter environment, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic"
+        ]
+    },
+    {
+        "animal_id": "444461202600114",
+        "D-day": 3,
+        "breed": "[개] 믹스견",
+        "총_생성된_프롬프트_수": 12,
+        "prompts": [
+            "A dog staring silently into the camera, close-up shot of the eyes, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, close-up shot of the eyes, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, close-up shot of the eyes, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, full body shot, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, full body shot, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, full body shot, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, profile shot from the side, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, profile shot from the side, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, profile shot from the side, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, wide full body shot showing the shelter environment, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, wide full body shot showing the shelter environment, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, wide full body shot showing the shelter environment, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic"
+        ]
+    },
+    {
+        "animal_id": "447512202600284",
+        "D-day": 2,
+        "breed": "[개] 믹스견",
+        "총_생성된_프롬프트_수": 12,
+        "prompts": [
+            "A dog staring silently into the camera, close-up shot of the eyes, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, close-up shot of the eyes, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, close-up shot of the eyes, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, full body shot, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, full body shot, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, full body shot, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, profile shot from the side, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, profile shot from the side, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, profile shot from the side, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, wide full body shot showing the shelter environment, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, wide full body shot showing the shelter environment, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, wide full body shot showing the shelter environment, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic"
+        ]
+    },
+    {
+        "animal_id": "411306202600126",
+        "D-day": 2,
+        "breed": "[고양이] 한국 고양이",
+        "총_생성된_프롬프트_수": 12,
+        "prompts": [
+            "A cat staring silently into the camera, close-up shot of the eyes, morning natural light, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
+            "A cat slowly turning its head, close-up shot of the eyes, evening shadows, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
+            "A cat lying down comfortably, close-up shot of the eyes, indoor fluorescent lighting, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
+            "A cat staring silently into the camera, full body shot, morning natural light, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
+            "A cat slowly turning its head, full body shot, evening shadows, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
+            "A cat lying down comfortably, full body shot, indoor fluorescent lighting, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
+            "A cat staring silently into the camera, profile shot from the side, morning natural light, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
+            "A cat slowly turning its head, profile shot from the side, evening shadows, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
+            "A cat lying down comfortably, profile shot from the side, indoor fluorescent lighting, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
+            "A cat staring silently into the camera, wide full body shot showing the shelter environment, morning natural light, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
+            "A cat slowly turning its head, wide full body shot showing the shelter environment, evening shadows, handheld documentary, natural lighting, shelter cat, emotional, cinematic",
+            "A cat lying down comfortably, wide full body shot showing the shelter environment, indoor fluorescent lighting, handheld documentary, natural lighting, shelter cat, emotional, cinematic"
+        ]
+    },
+    {
+        "animal_id": "447512202600283",
+        "D-day": 2,
+        "breed": "[개] 믹스견",
+        "총_생성된_프롬프트_수": 12,
+        "prompts": [
+            "A dog staring silently into the camera, close-up shot of the eyes, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, close-up shot of the eyes, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, close-up shot of the eyes, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, full body shot, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, full body shot, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, full body shot, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, profile shot from the side, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, profile shot from the side, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, profile shot from the side, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, wide full body shot showing the shelter environment, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, wide full body shot showing the shelter environment, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, wide full body shot showing the shelter environment, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic"
+        ]
+    },
+    {
+        "animal_id": "447507202600039",
+        "D-day": 2,
+        "breed": "[개] 말티즈",
+        "총_생성된_프롬프트_수": 12,
+        "prompts": [
+            "A dog staring silently into the camera, close-up shot of the eyes, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, close-up shot of the eyes, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, close-up shot of the eyes, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, full body shot, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, full body shot, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, full body shot, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, profile shot from the side, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, profile shot from the side, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, profile shot from the side, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog staring silently into the camera, wide full body shot showing the shelter environment, morning natural light, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog slowly turning its head, wide full body shot showing the shelter environment, evening shadows, handheld documentary, natural lighting, shelter dog, emotional, cinematic",
+            "A dog lying down comfortably, wide full body shot showing the shelter environment, indoor fluorescent lighting, handheld documentary, natural lighting, shelter dog, emotional, cinematic"
+        ]
+    },
+    {
+        "animal_id": "447507202600035",
+        "D-day": 2,
         "breed": "[개] 믹스견",
         "총_생성된_프롬프트_수": 12,
         "prompts": [
@@ -101,7 +301,7 @@
     },
     {
         "animal_id": "447522202600110",
-        "D-day": 3,
+        "D-day": 2,
         "breed": "[개] 믹스견",
         "총_생성된_프롬프트_수": 12,
         "prompts": [
@@ -121,7 +321,7 @@
     },
     {
         "animal_id": "447522202600109",
-        "D-day": 3,
+        "D-day": 2,
         "breed": "[개] 믹스견",
         "총_생성된_프롬프트_수": 12,
         "prompts": [
@@ -141,7 +341,7 @@
     },
     {
         "animal_id": "447521202600093",
-        "D-day": 2,
+        "D-day": 1,
         "breed": "[개] 시베리안 허스키",
         "총_생성된_프롬프트_수": 12,
         "prompts": [
