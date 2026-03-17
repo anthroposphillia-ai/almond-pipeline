@@ -23,6 +23,9 @@ def generate_video_prompts():
     # 3. 설득 원칙: visual storytelling without narration, emotion through observation not manipulation
     base_style = "unscripted, authentic, no artificial poses, observational documentary style, camera as silent witness, visual storytelling without narration, emotion through observation not manipulation"
 
+    # 모든 프롬프트 마지막에 추가될 공통 오디오 가이드
+    audio_common_suffix = "no background music, no narration, diegetic sound only, observational documentary style"
+
     all_prompts_data = []
 
     for animal in animals:
@@ -32,10 +35,23 @@ def generate_video_prompts():
         status = animal.get("status", "waiting")
         
         animal_type = "dog" if "개" in breed else ("cat" if "고양이" in breed else "animal")
-        breed_clean = breed.replace("[개] ", "").replace("[고양이] ", "").replace("[기타] ", "")
+        
+        # D-day별 오디오 디렉션 설정
+        audio_direction = ""
+        if status == "adopted":
+            audio_direction = 'ambient audio: "door opening sound, outside air and traffic faintly, natural light ambience, hopeful quiet, no music"'
+        elif status == "euthanized":
+            audio_direction = 'audio: "complete silence, no sound"'
+        elif d_day == 3:
+            audio_direction = 'ambient audio: "animal shelter background sounds, distant dogs barking faintly, fluorescent light hum, occasional kennel door sound, no music, raw documentary feel"'
+        elif d_day == 2:
+            audio_direction = 'ambient audio: "quiet shelter afternoon, single dog breathing close up, distant footsteps of caretaker, natural room tone, no music"'
+        elif d_day == 1:
+            audio_direction = 'ambient audio: "very quiet shelter, minimal sound, slow breathing, almost silent, heavy atmosphere, no music"'
+        else:
+            audio_direction = 'ambient audio: "natural shelter room tone, distant animal sounds"'
 
         # 3. 진행형 구조 원칙: D-day별 다른 무드 적용
-        # 2. 시각 원칙: 차가운 데이터 vs 살아있는 존재의 대비
         mood_prompts = []
         
         if status == "adopted":
@@ -55,7 +71,7 @@ def generate_video_prompts():
                 f"Empty cage floor where the {animal_type} used to be, emotional stillness, {mood_keywords}, {base_style}"
             ]
         elif d_day == 3:
-            # D-3: 처음 만남의 낯섦 (시각 원칙: 데이터 vs 생명)
+            # D-3: 처음 만남의 낯섦
             mood_header = "D-3: The Strange First Encounter."
             visual_contrast = "contrast between cold metal cage bars and the warmth of a living breathing creature, handheld shaky cam"
             mood_prompts = [
@@ -64,7 +80,7 @@ def generate_video_prompts():
                 f"A {animal_type} huddling in the corner of a dimly lit cage, raw documentary footage, {base_style}"
             ]
         elif d_day == 2:
-            # D-2: 관계가 생긴 하루 (유대감)
+            # D-2: 관계가 생긴 하루
             mood_header = "D-2: A Day of Connection."
             connection_style = "shallow depth of field, focus on the animal's interaction with the camera person, natural morning light"
             mood_prompts = [
@@ -73,7 +89,7 @@ def generate_video_prompts():
                 f"Close-up of a {animal_type} resting its chin on the cold floor, looking sadly but trustingly, {base_style}"
             ]
         elif d_day == 1:
-            # D-1: 시간이 멈추는 느낌 (긴박함과 정적)
+            # D-1: 시간이 멈추는 느낌
             mood_header = "D-1: The Moment Time Stops."
             urgency_style = "high contrast lighting, long shadow, silence, extreme close-up of breath, frozen in time"
             mood_prompts = [
@@ -82,12 +98,14 @@ def generate_video_prompts():
                 f"A {animal_type} staring into infinity beyond the cage bars, sunset shadows elongating, {base_style}"
             ]
         else:
-            # 기타 (일반 보호 중)
             mood_header = "Normal: Waiting for a miracle."
             mood_prompts = [
                 f"A {animal_type} looking through the shelter bars, soft documentary lighting, {base_style}",
                 f"A {animal_type} sitting quietly in its own world, cinematic observational shot, {base_style}"
             ]
+
+        # 모든 프롬프트에 오디오 디렉션 및 공통 접미사 결합
+        final_prompts = [f"{p}, {audio_direction}, {audio_common_suffix}" for p in mood_prompts]
 
         animal_data = {
             "animal_id": animal_id,
@@ -95,8 +113,8 @@ def generate_video_prompts():
             "breed": breed,
             "status": status,
             "mood_theme": mood_header,
-            "총_생성된_프롬프트_수": len(mood_prompts),
-            "prompts": mood_prompts
+            "총_생성된_프롬프트_수": len(final_prompts),
+            "prompts": final_prompts
         }
         all_prompts_data.append(animal_data)
 
