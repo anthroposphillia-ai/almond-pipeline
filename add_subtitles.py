@@ -54,53 +54,62 @@ def add_subtitles():
             # 2. MoviePy로 영상 로드
             clip = VideoFileClip(temp_video)
             
-            # 쇼츠 규격(9:16) 확인 및 조정 (필요시)
-            # Kling은 이미 9:16으로 생성하지만 안전을 위해 체크
+            # 3. 자막 데이터 구성 (D-day별 두 줄 자막)
+            status = video.get("status", "waiting")
+            end_date_raw = video.get("end_date", "") # animals.json에서 가져오도록 보완 필요 (현재 videos.json에 없으면 breed 활용)
             
-            # 3. 자막 클립 생성 (폰트는 나중에 사용자가 시스템에 맞게 조정 필요)
-            # Windows 기본 한글 폰트: 'Malgun-Gothic'
+            # 날짜 포맷팅 (YYYYMMDD -> YYYY-MM-DD)
+            formatted_date = ""
+            if end_date_raw and len(end_date_raw) == 8:
+                formatted_date = f"{end_date_raw[:4]}-{end_date_raw[4:6]}-{end_date_raw[6:]}"
+
+            line1, line2 = "", ""
+            if status == "adopted":
+                line1 = "가족을 찾았습니다"
+                line2 = formatted_date
+            elif status == "euthanized":
+                line1 = breed.replace("[개] ", "").replace("[고양이] ", "")
+                line2 = formatted_date
+            elif d_day == 3:
+                line1 = f"{breed.replace('[개] ', '').replace('[고양이] ', '')}입니다"
+                line2 = "3일이 남았습니다"
+            elif d_day == 2:
+                line1 = f"{breed.replace('[개] ', '').replace('[고양이] ', '')}입니다"
+                line2 = "내일 모레가 마지막 날입니다"
+            elif d_day == 1:
+                line1 = f"{breed.replace('[개] ', '').replace('[고양이] ', '')}입니다"
+                line2 = "내일이 마지막 날입니다"
+            else:
+                line1 = f"{breed.replace('[개] ', '').replace('[고양이] ', '')}"
+                line2 = "가족을 기다리고 있습니다"
+
+            # 4. 자막 클립 생성 (첫 3초간 표시)
             font_path = "Malgun-Gothic" 
             
-            # 상단 제목 서브타이틀
-            title_text = "공공보호소 긴급 공고"
-            title_clip = TextClip(
-                text=title_text,
+            # 첫 번째 줄
+            sub_clip1 = TextClip(
+                text=line1,
                 font=font_path,
-                font_size=60,
+                font_size=80,
+                color='white',
+                stroke_color='black',
+                stroke_width=1.5,
+                duration=3
+            ).with_position(('center', clip.h - 350))
+
+            # 두 번째 줄 (더 크게 강조)
+            sub_clip2 = TextClip(
+                text=line2,
+                font=font_path,
+                font_size=100,
                 color='white',
                 stroke_color='black',
                 stroke_width=2,
-                duration=clip.duration
-            ).with_position(('center', 100))
+                duration=3
+            ).with_position(('center', clip.h - 220))
 
-            # 중앙 품종 정보
-            breed_clip = TextClip(
-                text=breed,
-                font=font_path,
-                font_size=80,
-                color='yellow',
-                stroke_color='black',
-                stroke_width=2,
-                duration=clip.duration
-            ).with_position(('center', 'center'))
-
-            # 하단 D-day (강조)
-            dday_text = f"안락사까지 D-{d_day}" if d_day != "알 수 없음" else "가족을 기다려요"
-            dday_clip = TextClip(
-                text=dday_text,
-                font=font_path,
-                font_size=100,
-                color='red',
-                stroke_color='white',
-                stroke_width=3,
-                duration=clip.duration
-            ).with_position(('center', clip.h - 200))
-
-            # 하단 배경 바 (가독성 증대)
-            # bg_bar = ColorClip(size=(clip.w, 150), color=(0, 0, 0), duration=clip.duration).with_opacity(0.5).with_position(('center', clip.h - 225))
-
-            # 4. 합성
-            final_clip = CompositeVideoClip([clip, title_clip, breed_clip, dday_clip])
+            # 5. 합성
+            final_clip = CompositeVideoClip([clip, sub_clip1, sub_clip2])
             
             # 5. 저장
             final_clip.write_videofile(final_path, codec="libx264", audio_codec="aac", fps=24)

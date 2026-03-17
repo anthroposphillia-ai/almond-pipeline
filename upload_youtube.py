@@ -99,17 +99,45 @@ def start_upload_process():
 
         breed = video.get("breed", "유기동물")
         d_day = video.get("D-day")
-        
-        # 쇼츠 제목 및 본문 구성
+        status = video.get("status", "waiting")
+        animal_id = video.get("animal_id")
+
+        # 2. 안락사 결말로 판정된 경우 업로드 처리 건너뛰기 (추후 수동 알림 등으로 보완 가능)
+        if status == "euthanized":
+            print(f"[{animal_id}] 안락사 결말 영상입니다. 정책에 따라 업로드하지 않고 건너뜁니다.")
+            continue
+
+        # 3. 쇼츠 제목 및 본문 구성 (메타데이터 활용 가능하도록 확장성 유지)
         title = f"[긴급] 안락사 D-{d_day} {breed} 가족을 찾습니다 #shorts"
         description = f"공공보호소에서 가족을 기다리는 {breed}입니다. 안락사까지 단 {d_day}일 남았습니다. 사지 말고 입양해주세요.\n\n#유기동물 #입양공고 #shorts"
 
         try:
-            video_id = upload_video(youtube, final_path, title, description)
-            if video_id:
+            # 실제 업로드 실행
+            youtube_video_id = upload_video(youtube, final_path, title, description)
+            if youtube_video_id:
                 video["uploaded"] = True
-                video["youtube_url"] = f"https://youtu.be/{video_id}"
+                video["youtube_url"] = f"https://youtu.be/{youtube_video_id}"
                 
+                # 4. 업로드 후 고정(안내) 댓글 자동 작성 (API를 통한 Pin은 수동 필요 / 내용만 작성)
+                comment_body = "입양 문의는 영상 설명란의 보호소 연락처로 직접 해주세요. 저희는 콘텐츠 제작팀입니다. 모든 데이터는 국가동물보호정보시스템 공식 공공데이터입니다."
+                try:
+                    youtube.commentThreads().insert(
+                        part="snippet",
+                        body={
+                            "snippet": {
+                                "videoId": youtube_video_id,
+                                "topLevelComment": {"snippet": {"textOriginal": comment_body}}
+                            }
+                        }
+                    ).execute()
+                except Exception as ce:
+                    print(f"[{animal_id}] 안내 댓글 작성 실패: {ce}")
+
+                # 5. 상태 변화(입양 등) 발생 시 이전 영상들에 댓글 추가 로직 (개념적 구현)
+                if status == "adopted":
+                    # 이전 영상들의 ID를 찾는 로직은 DB/로그 확장이 필요함 (여기서는 현재 영상에 기록만 남김)
+                    print(f"[{animal_id}] 입양 완료 상태 감지. 이전 영상들에 순차적으로 댓글 작성이 권장됩니다.")
+
                 # 매 업로드 성공마다 즉시 저장 (유실 방지)
                 with open(input_file, "w", encoding="utf-8") as f:
                     json.dump(videos_data, f, ensure_ascii=False, indent=4)

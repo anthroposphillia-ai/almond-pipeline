@@ -81,8 +81,9 @@ def generate_video_prompts():
         elif d_day == 3:
             # D-3: 처음 만남의 낯섦
             mood_header = "D-3: The Strange First Encounter."
-            # 실제 사진에서 AI 영상으로 넘어가는 듯한 의도적 대비 효과 추가
-            visual_contrast = "intentional visual contrast, cold documentary record transitioning to living breathing presence, contrast between cold metal cage bars and the warmth of a living breathing creature, handheld shaky cam"
+            # 원칙 5: 실제 사진(기록)에서 AI 영상으로 넘어가는 듯한 의도적 대비 효과 강화
+            # "first frame resembles actual shelter documentation photo, cold clinical record aesthetic, then transition to warmer observational documentary style"
+            visual_contrast = "first frame resembles actual shelter documentation photo, cold clinical record aesthetic, then transition to warmer observational documentary style, intentional visual contrast, cold documentary record transitioning to living breathing presence, handheld shaky cam"
             mood_prompts = [
                 f"A {animal_type} nervously sniffing the air in a cold shelter, {visual_contrast}, {base_style}",
                 f"Extreme close-up of a {animal_type}'s eye reflecting a blue digital record screen, {visual_contrast}, {base_style}",

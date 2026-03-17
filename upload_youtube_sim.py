@@ -24,13 +24,19 @@ def simulate_upload():
     upload_count = 0
     for video in videos_data:
         animal_id = video["animal_id"]
+        status = video.get("status", "waiting")
         d_day_key = f"D-{video['D-day']}" if video['D-day'] in [1, 2, 3] else "D-3"
         
+        if status == "euthanized":
+            print(f"[{animal_id}] 업로드 시뮬레이션: SKIPPED (안락사 결말 정책)")
+            continue
+
         # 메타데이터에서 제목 가져오기
         title = metadata_data.get(animal_id, {}).get(d_day_key, {}).get("title", f"[공고] {video['breed']} 가족을 찾습니다")
         
         print(f"[{animal_id}] 업로드 시뮬레이션: SUCCESS")
         print(f" -> 업로드 예정 제목: {title}")
+        print(f" -> 자동 작성될 고정 댓글: '입양 문의는 영상 설명란의...'")
         upload_count += 1
 
     print(f"[시뮬레이션] 총 {upload_count}개의 영상 업로드 시뮬레이션을 마쳤습니다.")

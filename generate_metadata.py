@@ -24,6 +24,7 @@ def generate_metadata():
         age = animal.get("나이", "알 수 없음")
         sex = "암컷" if animal.get("성별") == "F" else "수컷" if animal.get("성별") == "M" else "미상"
         end_date = animal.get("보호종료일", "알 수 없음")
+        d_day = animal.get("D-day")
         
         # 품종명 정제 ( [개] 믹스견 -> 믹스견 )
         breed_clean = breed.replace("[개] ", "").replace("[고양이] ", "").replace("[기타] ", "")
@@ -60,20 +61,33 @@ def generate_metadata():
         animal_metadata = {}
         
         for key, value in scenarios.items():
+            # 경과일 계산 (보호기간 10일 기준)
+            elapsed_days = 10 - d_day if isinstance(d_day, int) else "알 수 없음"
+            
             # 설명 구성
-            description = f"""{value['description_header']}
+            description = f"""본 콘텐츠는 국가동물보호정보시스템 공공데이터를 기반으로 제작됩니다.
 
-🐾 동물 정보
-- 품종: {breed}
-- 나이: {age}
-- 성별: {sex}
-- 지역: {region}
-- 보호소: {location_full}
-- 보호 종료일: {end_date}
+이 아이는 {region} 보호소에 있습니다.
+보호기간은 10일입니다. 오늘은 {elapsed_days}일째입니다.
 
-이 아이의 이야기는 국가동물보호정보시스템 실제 데이터를 기반으로 합니다.
-입양 문의는 해당 보호소로 직접 부탁드립니다. 
+품종: {breed}
+나이: {age}
+성별: {sex}
+보호소: {location_full}
+보호 종료일: {end_date}
 
+이 영상은 국가동물보호정보시스템 실제 데이터를 기반으로 AI가 제작했습니다.
+동물은 진짜입니다.
+
+D-3 영상부터 보시려면 → (재생목록 링크 준비중)
+입양 문의 → {location_full} (문의 시 공고번호 {animal_id}를 말씀해주세요)
+
+매일 새로운 아이들이 보호소에 들어옵니다.
+보호기간은 10일입니다.
+그래서 매일 올립니다.
+우리가 빠른 게 아닙니다. 시간이 없는 겁니다.
+
+---
 {tags_str}
 
 #유기동물 #사지말고입양하세요 #공공보호소 #입양공고 #shorts"""
