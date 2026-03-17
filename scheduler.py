@@ -42,6 +42,15 @@ def run_script(script_name):
 
 def job():
     """전체 파이프라인을 순차적으로 실행하는 메인 작업입니다."""
+    
+    # 선언문 출력
+    log("\n=== 오늘도 시작합니다 ===")
+    manifesto_path = "manifesto.txt"
+    if os.path.exists(manifesto_path):
+        with open(manifesto_path, "r", encoding="utf-8") as f:
+            print(f.read())
+        time.sleep(3) # 3초 대기
+    
     pipeline = [
         "track_animals.py",
         "fetch_animals.py",
