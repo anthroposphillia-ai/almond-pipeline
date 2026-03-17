@@ -23,7 +23,23 @@ def log(message):
 
 def run_script(script_name):
     """지정한 파이썬 스크립트를 실행합니다."""
+    # 단계별 짧은 가이드라인 매핑
+    guidelines = {
+        "track_animals.py": "[생존 확인] 한 명의 생명이라도 놓치지 않고 끝까지 추적합니다.",
+        "fetch_animals.py": "[데이터 수집] 사실만을 담습니다. 있는 그대로의 정보를 가져옵니다.",
+        "generate_prompts.py": "[AI 프롬프트] 과장하지 않습니다. 아이들의 본연의 모습을 담아냅니다.",
+        "generate_thumbnail.py": "[이미지 제작] 불쌍함을 팔지 않습니다. 아이의 기한을 명확히 알립니다.",
+        "generate_metadata.py": "[메타데이터] 시청자의 마음을 두드리되 공유를 강요하지 않습니다.",
+        "generate_videos.py": "[영상 생성] 플랫폼이 지속 가능하도록, 매일 새로운 아이들을 알립니다.",
+        "add_subtitles.py": "[자막 합성] 긴급성을 부풀리지 않고, 사실에 기반한 정보를 알립니다.",
+        "upload_youtube.py": "[유튜브 업로드] 돈과 명성보다 아이들의 생명이 최우선입니다."
+    }
+
     log(f"--- 스텝 시작: {script_name} ---")
+    if script_name in guidelines:
+        log(f"💡 원칙 확인: {guidelines[script_name]}")
+        time.sleep(1) # 짧은 성찰의 시간
+
     try:
         # subprocess.run을 사용하여 스크립트 실행
         # capture_output=True로 설정하여 출력 내용을 로그에 담을 수 있음
