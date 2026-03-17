@@ -17,14 +17,22 @@ def generate_video_prompts():
         print("동물 데이터가 비어 있습니다.")
         return
 
-    # 김옥영 다큐멘터리 원칙 기반 프롬프트 엔진
-    # 1. 현실 원칙: unscripted, authentic, no artificial poses
-    # 2. 관찰자 원칙: observational documentary style, camera as silent witness
-    # 3. 설득 원칙: visual storytelling without narration, emotion through observation not manipulation
-    base_style = "unscripted, authentic, no artificial poses, observational documentary style, camera as silent witness, visual storytelling without narration, emotion through observation not manipulation"
+    # 언캐니 밸리 감소 및 사실감 증대를 위한 원칙
+    eye_fx = "natural eye blinking, subtle eye movement, not staring directly into camera, occasional glance away and return"
+    fur_fx = "subtle fur movement from breathing, natural coat texture, realistic fur physics, slight movement from inhale exhale"
+    camera_fx = "slight handheld camera shake, natural camera movement, slightly imperfect framing, documentary cinematography"
+    light_fx = "uneven fluorescent lighting, slight shadows, realistic shelter lighting, imperfect light distribution"
+    bg_fx = "worn shelter floor, slightly dirty kennel walls, realistic worn environment, authentic shelter details"
+    motion_fx = "short natural movements, abrupt realistic stops and starts, no smooth artificial transitions"
+    
+    uncanny_reduction = f"{eye_fx}, {fur_fx}, {camera_fx}, {light_fx}, {bg_fx}, {motion_fx}"
+    
+    # 기본 다큐멘터리 스타일 (김옥영 원칙 포함)
+    base_style = f"unscripted, authentic, no artificial poses, observational documentary style, camera as silent witness, visual storytelling without narration, emotion through observation not manipulation, {uncanny_reduction}"
 
-    # 모든 프롬프트 마지막에 추가될 공통 오디오 가이드
-    audio_common_suffix = "no background music, no narration, diegetic sound only, observational documentary style"
+    # 모든 프롬프트 마지막에 추가될 공통 오디오 및 메타 가이드
+    meta_suffix = "slightly imperfect, authentic, this is AI-generated but the animal is real, documentary truth over visual perfection"
+    audio_common_suffix = f"no background music, no narration, diegetic sound only, observational documentary style, {meta_suffix}"
 
     all_prompts_data = []
 
@@ -73,7 +81,8 @@ def generate_video_prompts():
         elif d_day == 3:
             # D-3: 처음 만남의 낯섦
             mood_header = "D-3: The Strange First Encounter."
-            visual_contrast = "contrast between cold metal cage bars and the warmth of a living breathing creature, handheld shaky cam"
+            # 실제 사진에서 AI 영상으로 넘어가는 듯한 의도적 대비 효과 추가
+            visual_contrast = "intentional visual contrast, cold documentary record transitioning to living breathing presence, contrast between cold metal cage bars and the warmth of a living breathing creature, handheld shaky cam"
             mood_prompts = [
                 f"A {animal_type} nervously sniffing the air in a cold shelter, {visual_contrast}, {base_style}",
                 f"Extreme close-up of a {animal_type}'s eye reflecting a blue digital record screen, {visual_contrast}, {base_style}",
