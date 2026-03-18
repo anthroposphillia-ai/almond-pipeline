@@ -98,18 +98,27 @@ def start_upload_process():
             continue
 
         breed = video.get("breed", "유기동물")
+        breed_clean = breed.replace("[개] ", "").replace("[고양이] ", "").replace("[기타] ", "")
         d_day = video.get("D-day")
         status = video.get("status", "waiting")
         animal_id = video.get("animal_id")
 
-        # 2. 안락사 결말로 판정된 경우 업로드 처리 건너뛰기 (추후 수동 알림 등으로 보완 가능)
+        # 용어 정제 로직 (Step 1070 반영)
+        if "[개]" in breed:
+            subject_name = "이 강아지"
+        elif "[고양이]" in breed:
+            subject_name = "이 고양이"
+        else:
+            subject_name = f"이 {breed_clean}"
+
+        # 2. 안락사 결말로 판정된 경우 업로드 처리 건너뛰기
         if status == "euthanized":
             print(f"[{animal_id}] 안락사 결말 영상입니다. 정책에 따라 업로드하지 않고 건너뜁니다.")
             continue
 
-        # 3. 쇼츠 제목 및 본문 구성 (메타데이터 활용 가능하도록 확장성 유지)
-        title = f"[긴급] 안락사 D-{d_day} {breed} 가족을 찾습니다 #shorts"
-        description = f"공공보호소에서 가족을 기다리는 {breed}입니다. 안락사까지 단 {d_day}일 남았습니다. 사지 말고 입양해주세요.\n\n#유기동물 #입양공고 #shorts"
+        # 3. 쇼츠 제목 및 본문 구성
+        title = f"[긴급] 안락사 D-{d_day} {breed_clean} 가족을 찾습니다 #shorts"
+        description = f"공공보호소에서 가족을 기다리는 {subject_name}입니다. 안락사까지 단 {d_day}일 남았습니다. 사지 말고 입양해주세요.\n\n→ 지금 기다리는 동물들 보기: [재생목록링크]\n\n#유기동물 #입양공고 #shorts"
 
         try:
             # 실제 업로드 실행

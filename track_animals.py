@@ -78,6 +78,7 @@ def track_animal_status():
         old_status = animal.get("status", "waiting")
         
         # 1. D-day 업데이트
+        old_d_day = animal.get("D-day", 99)
         notice_date = datetime.strptime(animal["보호종료일"], "%Y%m%d").date()
         new_d_day = (notice_date - today).days
         animal["D-day"] = new_d_day
@@ -110,6 +111,11 @@ def track_animal_status():
                 "new_status": new_status,
                 "date": today_str
             }
+            # 기적의 케이스 감지 (D-1 이하에서 입양)
+            if old_status == "waiting" and new_status == "adopted" and old_d_day <= 1:
+                animal["miracle_case"] = True
+                print(f"[{animal_id}] ✨ 기적의 케이스 감지! (D-{old_d_day}에 입양)")
+            
             status_logs.append(log_entry)
             animal["status"] = new_status
             print(f"[{animal_id}] 상태 변경: {old_status} -> {new_status}")
@@ -142,7 +148,7 @@ def track_animal_status():
     print(f"오늘 입양 완료: {summary['adopted']}마리")
     print(f"오늘 보호종료(만료): {summary['euthanized']}마리")
     if summary['urgent_d1'] > 0:
-        print(f"⚠️ 긴급: 안락사 D-1인 아이가 {summary['urgent_d1']}마리 있습니다!")
+        print(f"⚠️ 긴급: 안락사 D-1인 동물이 {summary['urgent_d1']}마리 있습니다!")
     print("--------------------------------\n")
 
 if __name__ == "__main__":

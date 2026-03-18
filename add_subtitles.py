@@ -56,52 +56,80 @@ def add_subtitles():
             
             # 3. 자막 데이터 구성 (D-day별 두 줄 자막)
             status = video.get("status", "waiting")
-            end_date_raw = video.get("end_date", "") # animals.json에서 가져오도록 보완 필요 (현재 videos.json에 없으면 breed 활용)
+            animal_id = video.get("animal_id")
+            end_date_raw = video.get("end_date", "")
             
-            # 날짜 포맷팅 (YYYYMMDD -> YYYY-MM-DD)
+            # 품종에 따른 용어 정제 (Step 1070)
+            breed_clean = breed.replace("[개] ", "").replace("[고양이] ", "").replace("[기타] ", "")
+            if "[개]" in breed:
+                subject_name = "이 강아지"
+            elif "[고양이]" in breed:
+                subject_name = "이 고양이"
+            else:
+                subject_name = f"이 {breed_clean}"
+
+            # 날짜 포맷팅
             formatted_date = ""
             if end_date_raw and len(end_date_raw) == 8:
                 formatted_date = f"{end_date_raw[:4]}-{end_date_raw[4:6]}-{end_date_raw[6:]}"
 
             line1, line2 = "", ""
             if status == "adopted":
-                line1 = "가족을 찾았습니다"
+                line1 = f"{subject_name}가 가족을 찾았습니다"
                 line2 = formatted_date
             elif status == "euthanized":
-                line1 = breed.replace("[개] ", "").replace("[고양이] ", "")
-                line2 = formatted_date
+                # 다음 동물 ID 가져오기 (Step 1046)
+                next_animal_id = "다음 동물"
+                try:
+                    with open("animals.json", "r", encoding="utf-8") as af:
+                        animals = json.load(af)
+                        # 현재 동물이 아닌 첫 번째 대기 중인 동물 찾기
+                        waiting_animals = [a for a in animals if a.get("id") != animal_id and a.get("status", "waiting") == "waiting"]
+                        if waiting_animals:
+                            next_animal_id = waiting_animals[0].get("id")[-3:] # 끝 3자리만 표시 예시 (217호 스타일)
+                except:
+                    pass
+                
+                line1 = f"{animal_id[-3:]}호는 오늘 떠났습니다.\n보호기간은 10일이었습니다."
+                line2 = f"오늘도 새로운 동물들이 들어왔습니다.\n{next_animal_id}호입니다."
             elif d_day == 3:
-                line1 = f"{breed.replace('[개] ', '').replace('[고양이] ', '')}입니다"
+                line1 = f"{breed_clean}입니다"
                 line2 = "3일이 남았습니다"
             elif d_day == 2:
-                line1 = f"{breed.replace('[개] ', '').replace('[고양이] ', '')}입니다"
+                line1 = f"{breed_clean}입니다"
                 line2 = "내일 모레가 마지막 날입니다"
             elif d_day == 1:
-                line1 = f"{breed.replace('[개] ', '').replace('[고양이] ', '')}입니다"
+                line1 = f"{breed_clean}입니다"
                 line2 = "내일이 마지막 날입니다"
             else:
-                line1 = f"{breed.replace('[개] ', '').replace('[고양이] ', '')}"
+                line1 = breed_clean
                 line2 = "가족을 기다리고 있습니다"
 
-            # 4. 자막 클립 생성 (첫 3초간 표시)
-            font_path = "Malgun-Gothic" 
+            # 4. 자막 클립 생성
+            # 폰트 설정 보완 (Windows 환경 대응)
+            font_path = "Malgun-Gothic"
+            # 만약 시스템 폰트 인식 실패 시 파일 경로 직접 시도
+            if os.name == 'nt':
+                possible_font_path = "C:\\Windows\\Fonts\\malgun.ttf"
+                if os.path.exists(possible_font_path):
+                    font_path = possible_font_path
             
-            # 첫 번째 줄
+            # 첫 번째 줄 (줄바꿈 대응을 위해 font_size 조절 가능)
             sub_clip1 = TextClip(
                 text=line1,
                 font=font_path,
-                font_size=80,
+                font_size=60 if "\n" in line1 else 80,
                 color='white',
                 stroke_color='black',
                 stroke_width=1.5,
                 duration=3
-            ).with_position(('center', clip.h - 350))
+            ).with_position(('center', clip.h - 400 if "\n" in line1 else clip.h - 350))
 
-            # 두 번째 줄 (더 크게 강조)
+            # 두 번째 줄 (강조)
             sub_clip2 = TextClip(
                 text=line2,
                 font=font_path,
-                font_size=100,
+                font_size=70 if "\n" in line2 else 100,
                 color='white',
                 stroke_color='black',
                 stroke_width=2,

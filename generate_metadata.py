@@ -29,6 +29,14 @@ def generate_metadata():
         # 품종명 정제 ( [개] 믹스견 -> 믹스견 )
         breed_clean = breed.replace("[개] ", "").replace("[고양이] ", "").replace("[기타] ", "")
         
+        # 용어 정제 로직 (Step 1070 반영)
+        if "[개]" in breed:
+            subject_name = "이 강아지"
+        elif "[고양이]" in breed:
+            subject_name = "이 고양이"
+        else:
+            subject_name = f"이 {breed_clean}"
+
         # 태그 리스트 생성
         base_tags = ["유기견", "유기묘", "입양", "보호소", "동물보호", "stray dog", "animal rescue", "adoption", "D-day", "보호기간"]
         tags = base_tags + [breed_clean, region]
@@ -37,12 +45,12 @@ def generate_metadata():
         # 시나리오별 메타데이터 세트
         scenarios = {
             "D-3": {
-                "title": f"[{breed_clean}] {breed_clean}에게 3일이 남았습니다",
-                "description_header": "🚨 공공보호소 긴급 공고: 안락사까지 3일 남았습니다."
+                "title": f"[{breed_clean}] {subject_name}에게 3일이 남았습니다",
+                "description_header": f"🚨 공공보호소 긴급 공고: 안락사까지 3일 남았습니다."
             },
             "D-2": {
                 "title": f"내일 모레가 마지막입니다 | {breed_clean} {region}",
-                "description_header": "⚠️ 내일 모레면 이 아이를 다시 볼 수 없을지도 모릅니다."
+                "description_header": f"⚠️ 내일 모레면 {subject_name}를 다시 볼 수 없을지도 모릅니다."
             },
             "D-1": {
                 "title": f"내일입니다 | {breed_clean}",
@@ -50,11 +58,11 @@ def generate_metadata():
             },
             "입양결말": {
                 "title": f"가족을 찾았습니다 🐾 | {breed_clean}",
-                "description_header": "🎉 행복한 소식! 드디어 평생 가족을 만났습니다."
+                "description_header": f"🎉 행복한 소식! 드디어 {subject_name}가 평생 가족을 만났습니다."
             },
             "안락사결말": {
                 "title": f"{breed_clean} | {end_date}",
-                "description_header": f"🕯️ {breed_clean} 아이가 하늘의 별이 되었습니다. 기억해주세요."
+                "description_header": f"🕯️ {subject_name}가 하늘의 별이 되었습니다. 기억해주세요."
             }
         }
 
@@ -67,7 +75,7 @@ def generate_metadata():
             # 설명 구성
             description = f"""본 콘텐츠는 국가동물보호정보시스템 공공데이터를 기반으로 제작됩니다.
 
-이 아이는 {region} 보호소에 있습니다.
+{subject_name}는 {region} 보호소에 있습니다.
 보호기간은 10일입니다. 오늘은 {elapsed_days}일째입니다.
 
 품종: {breed}
@@ -77,12 +85,12 @@ def generate_metadata():
 보호 종료일: {end_date}
 
 이 영상은 국가동물보호정보시스템 실제 데이터를 기반으로 AI가 제작했습니다.
-동물은 진짜입니다.
+{subject_name}는 진짜입니다.
 
 D-3 영상부터 보시려면 → (재생목록 링크 준비중)
 입양 문의 → {location_full} (문의 시 공고번호 {animal_id}를 말씀해주세요)
 
-매일 새로운 아이들이 보호소에 들어옵니다.
+매일 새로운 강아지와 고양이들이 보호소에 들어옵니다.
 보호기간은 10일입니다.
 그래서 매일 올립니다.
 우리가 빠른 게 아닙니다. 시간이 없는 겁니다.

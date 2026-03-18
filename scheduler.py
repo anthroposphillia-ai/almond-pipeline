@@ -27,12 +27,12 @@ def run_script(script_name):
     guidelines = {
         "track_animals.py": "[생존 확인] 한 명의 생명이라도 놓치지 않고 끝까지 추적합니다.",
         "fetch_animals.py": "[데이터 수집] 사실만을 담습니다. 있는 그대로의 정보를 가져옵니다.",
-        "generate_prompts.py": "[AI 프롬프트] 과장하지 않습니다. 아이들의 본연의 모습을 담아냅니다.",
-        "generate_thumbnail.py": "[이미지 제작] 불쌍함을 팔지 않습니다. 아이의 기한을 명확히 알립니다.",
+        "generate_prompts.py": "[AI 프롬프트] 과장하지 않습니다. 동물들 본연의 모습을 담아냅니다.",
+        "generate_thumbnail.py": "[이미지 제작] 불쌍함을 팔지 않습니다. 동물의 기한을 명확히 알립니다.",
         "generate_metadata.py": "[메타데이터] 시청자의 마음을 두드리되 공유를 강요하지 않습니다.",
-        "generate_videos.py": "[영상 생성] 플랫폼이 지속 가능하도록, 매일 새로운 아이들을 알립니다.",
+        "generate_videos.py": "[영상 생성] 플랫폼이 지속 가능하도록, 매일 새로운 동물들을 알립니다.",
         "add_subtitles.py": "[자막 합성] 긴급성을 부풀리지 않고, 사실에 기반한 정보를 알립니다.",
-        "upload_youtube.py": "[유튜브 업로드] 돈과 명성보다 아이들의 생명이 최우선입니다."
+        "upload_youtube.py": "[유튜브 업로드] 돈과 명성보다 동물들의 생명이 최우선입니다."
     }
 
     log(f"--- 스텝 시작: {script_name} ---")
@@ -93,6 +93,13 @@ schedule.every().day.at("08:50").do(lambda: run_script("track_animals.py"))
 
 # 매일 오전 09:00에 전체 파이프라인 실행 예약
 schedule.every().day.at("09:00").do(job)
+
+# 매월 1일 오전 09:05에 월간 통계 요약 게시 (Step 1046)
+def run_monthly_summary():
+    if datetime.now().day == 1:
+        run_script("post_monthly_summary.py")
+
+schedule.every().day.at("09:05").do(run_monthly_summary)
 
 if __name__ == "__main__":
     log("파이프라인 스케줄러 시작. 매일 08:50(상태 체크) 및 09:00(전체 실행)에 작동합니다.")

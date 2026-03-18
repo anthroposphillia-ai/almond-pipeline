@@ -10,9 +10,15 @@ client_secrets.json.json
 final_videos/
 thumbnails/
 temp_*.mp4
+dummy_videos/
+longform_videos/
 
 # Logs
 logs/
+monthly_summary_log.txt
+
+# Data
+status_log.json
 
 # Python
 __pycache__/

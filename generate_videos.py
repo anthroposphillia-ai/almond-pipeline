@@ -144,6 +144,52 @@ def batch_generate_videos(limit=1):
             except Exception as e:
                 print(f"오류 발생: {e}")
 
+def create_longform_videos():
+    """입양/기적 케이스 동물의 과거 클립들을 모아 롱폼 영상을 제작합니다."""
+    # (내용은 이전과 동일)
+    from moviepy import VideoFileClip, concatenate_videoclips
+    
+    videos_file = "videos.json"
+    animals_file = "animals.json"
+    output_dir = "longform_videos"
+    os.makedirs(output_dir, exist_ok=True)
+    
+    if not os.path.exists(videos_file) or not os.path.exists(animals_file):
+        return
+
+    with open(videos_file, "r", encoding="utf-8") as f:
+        videos = json.load(f)
+    with open(animals_file, "r", encoding="utf-8") as f:
+        animals = json.load(f)
+
+    # 상태가 adopted인 동물 필터링
+    adopted_animals = [a for a in animals if a.get("status") == "adopted"]
+    
+    for animal in adopted_animals:
+        animal_id = animal["id"]
+        breed = animal.get("품종", "유기동물").replace("[개] ", "").replace("[고양이] ", "").replace("[기타] ", "")
+        is_miracle = animal.get("miracle_case", False)
+        
+        relevant_videos = [v for v in videos if v["animal_id"] == animal_id]
+        clips_paths = [v.get("final_path") for v in sorted(relevant_videos, key=lambda x: x.get("D-day", 0), reverse=True) if v.get("final_path")]
+        
+        if len(clips_paths) < 2:
+            continue
+            
+        print(f"[{animal_id}] 롱폼 영상 제작 시작... (클립 수: {len(clips_paths)})")
+        
+        try:
+            video_clips = [VideoFileClip(p) for p in clips_paths if os.path.exists(p)]
+            if not video_clips: continue
+                
+            final_story = concatenate_videoclips(video_clips)
+            filename = f"miracle_{animal_id}.mp4" if is_miracle else f"adopted_{animal_id}.mp4"
+            final_story.write_videofile(os.path.join(output_dir, filename), codec="libx264", audio_codec="aac")
+            print(f"[{animal_id}] 롱폼 영상 저장 완료: {filename}")
+            for c in video_clips: c.close()
+        except Exception as e:
+            print(f"[{animal_id}] 롱폼 영상 제작 중 오류: {e}")
+
 if __name__ == "__main__":
-    # 테스트를 위해 1개만 먼저 생성하도록 설정 (필요시 숫자를 늘리세요)
     batch_generate_videos(limit=1)
+    create_longform_videos()

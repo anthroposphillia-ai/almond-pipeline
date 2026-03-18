@@ -56,5 +56,15 @@ def simulate_video_generation():
         
     print(f"[시뮬레이션] 총 {len(videos_data)}개의 더미 영상 데이터가 videos.json에 저장되었습니다.")
 
+def create_longform_videos_sim():
+    """시뮬레이션용 롱폼 영상 제작 함수"""
+    # generate_videos.py의 로직과 동일하지만 시뮬레이션 환경에 맞춰 조정 필요시 대응
+    try:
+        from generate_videos import create_longform_videos
+        create_longform_videos()
+    except Exception as e:
+        print(f"[시뮬레이션] 롱폼 영상 제작 중 오류: {e}")
+
 if __name__ == "__main__":
     simulate_video_generation()
+    create_longform_videos_sim()
