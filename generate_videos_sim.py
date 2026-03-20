@@ -44,12 +44,31 @@ def simulate_video_generation():
             "video_url": os.path.abspath(dummy_path), # 로컬 경로로 전달
             "D-day": item["D-day"],
             "breed": item["breed"],
-            "prompt": item["prompts"][0] if item.get("prompts") else "No prompt available"
+            "prompt": item["prompts"][0] if item.get("prompts") else "No prompt available",
+            "mood_theme": item.get("mood_theme", "Observational Documentary") # mood_theme 추가
         }
         videos_data.append(video_info)
         processed_animals.add(animal_id)
         
         print(f"[{animal_id}] 더미 영상 생성 완료: {dummy_path}")
+
+    print("================================")
+    print(f"[09:05] generate_videos.py 실행 (시뮬레이션)")
+    print("================================")
+    print("- 생성 예정 영상 목록")
+    for v in videos_data:
+        # 프롬프트에서 앵글/무드 유추
+        p = v.get("prompt", "")
+        angle = "Close-up" if "Close-up" in p or "Extreme close-up" in p else "Medium shot"
+        mood = v.get("mood_theme", "Observational Documentary")
+        
+        print(f"  * {v['animal_id']}, D-{v['D-day']}, {angle}, {mood}")
+    
+    print("- 플랫폼별 출력 경로:")
+    platforms = ["youtube", "tiktok", "instagram", "twitter"]
+    for p in platforms:
+        print(f"  final_videos/{p}/")
+    print("")
 
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(videos_data, f, ensure_ascii=False, indent=4)

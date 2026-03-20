@@ -104,18 +104,21 @@ def track_animal_status():
                 new_status = "unknown"
 
         # 3. 상태 변화 기록
-        if old_status != new_status:
-            log_entry = {
-                "animal_id": animal_id,
-                "old_status": old_status,
-                "new_status": new_status,
-                "date": today_str
-            }
-            # 기적의 케이스 감지 (D-1 이하에서 입양)
-            if old_status == "waiting" and new_status == "adopted" and old_d_day <= 1:
-                animal["miracle_case"] = True
-                print(f"[{animal_id}] ✨ 기적의 케이스 감지! (D-{old_d_day}에 입양)")
+            # 이름 정보 연동 (추가 단계 10)
+            name_info = {}
+            if os.path.exists("animal_names.json"):
+                with open("animal_names.json", "r", encoding="utf-8") as f:
+                    names_data = json.load(f)
+                    name_info = names_data.get(animal_id, {})
             
+            if name_info:
+                log_entry.update({
+                    "name": name_info.get("name"),
+                    "name_comment_id": name_info.get("comment_id"),
+                    "name_comment_platform": name_info.get("platform")
+                })
+                print(f"  └ 이름 정보 확인: {name_info.get('name')} (ID: {name_info.get('comment_id')})")
+
             status_logs.append(log_entry)
             animal["status"] = new_status
             print(f"[{animal_id}] 상태 변경: {old_status} -> {new_status}")
@@ -142,14 +145,39 @@ def track_animal_status():
     with open(status_log_file, "w", encoding="utf-8") as f:
         json.dump(status_logs, f, ensure_ascii=False, indent=4)
 
-    # 요약 출력
-    print("\n--- 오늘 동물 상태 추적 요약 ---")
-    print(f"현재 대기중: {summary['waiting']}마리")
-    print(f"오늘 입양 완료: {summary['adopted']}마리")
-    print(f"오늘 보호종료(만료): {summary['euthanized']}마리")
-    if summary['urgent_d1'] > 0:
-        print(f"⚠️ 긴급: 안락사 D-1인 동물이 {summary['urgent_d1']}마리 있습니다!")
-    print("--------------------------------\n")
+    # 요약 출력 (요청된 상세 형식 반영)
+    print("================================")
+    print(f"[08:50] track_animals.py 실행")
+    print("================================")
+    print(f"- 처리한 동물 수: {len(stored_animals)}마리")
+    
+    # 상태 변화 출력
+    changed = [log for log in status_logs if log["date"].startswith(today.strftime("%Y-%m-%d"))]
+    if changed:
+        print("- 상태 변화:")
+        for c in changed:
+            print(f"  * {c['animal_id']}: {c['old_status']} -> {c['new_status']}")
+    else:
+        print("- 상태 변화: 없음")
+
+    # D-1 긴급 동물
+    urgent = [a for a in updated_stored_animals if a.get("D-day") == 1]
+    if urgent:
+        print("- D-1 긴급 동물:")
+        for u in urgent:
+            print(f"  * {u['id']} ({u['품종']})")
+    else:
+        print("- D-1 긴급 동물: 없음")
+
+    # miracle_case
+    miracles = [a for a in ended_animals if a.get("miracle_case")]
+    if miracles:
+        print("- miracle_case:")
+        for m in miracles:
+            print(f"  * {m['id']} (D-{m.get('old_d_day', 0)}에 입양)")
+    else:
+        print("- miracle_case: 없음")
+    print("")
 
 if __name__ == "__main__":
     track_animal_status()

@@ -128,12 +128,20 @@ def generate_video_prompts():
         }
         all_prompts_data.append(animal_data)
 
-    # 결과를 prompts.json 파일로 저장합니다.
+    # 결과 저장
     with open(output_file, "w", encoding="utf-8") as json_file:
         json.dump(all_prompts_data, json_file, ensure_ascii=False, indent=4)
 
-    print(f"\n[다큐멘터리 원칙 적용 완료] {len(animals)}마리에 대한 고도화된 프롬프트를 생성했습니다.")
-    print(f"결과는 '{output_file}' 파일에 저장되었습니다.")
+    print("================================")
+    print(f"[09:02] generate_prompts.py 실행")
+    print("================================")
+    print(f"- 생성된 프롬프트 수: {len(animals)}개")
+    if all_prompts_data:
+        print("- 동물별 프롬프트 예시:")
+        for data in all_prompts_data:
+            example = data["prompts"][0][:100] + "..." if data["prompts"] else "없음"
+            print(f"  * {data['animal_id']}: {example}")
+    print("")
 
 if __name__ == "__main__":
     generate_video_prompts()

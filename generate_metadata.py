@@ -14,22 +14,25 @@ def generate_metadata():
         animals = json.load(f)
 
     metadata_result = {}
+    used_titles = {} # 중복 제목 추적을 위한 딕셔너리
 
     for animal in animals:
         animal_id = animal.get("id")
         breed = animal.get("품종", "유기동물")
-        location_full = animal.get("보호소위치", "알 수 없음")
-        # 지역명 추출 (첫 번째 단어, 주로 도/시 단위)
+        location_full = animal.get("보호소주소", "알 수 없음")
         region = location_full.split()[0] if location_full != "알 수 없음" else "전국"
+        care_nm = animal.get("보호소명", region)
+        care_tel = animal.get("보호소전화번호", "")
         age = animal.get("나이", "알 수 없음")
         sex = "암컷" if animal.get("성별") == "F" else "수컷" if animal.get("성별") == "M" else "미상"
         end_date = animal.get("보호종료일", "알 수 없음")
         d_day = animal.get("D-day")
+        special_mark = animal.get("특징", "")
         
-        # 품종명 정제 ( [개] 믹스견 -> 믹스견 )
+        # 품종명 정제
         breed_clean = breed.replace("[개] ", "").replace("[고양이] ", "").replace("[기타] ", "")
         
-        # 용어 정제 로직 (Step 1070 반영)
+        # 용어 정제
         if "[개]" in breed:
             subject_name = "이 강아지"
         elif "[고양이]" in breed:
@@ -37,42 +40,54 @@ def generate_metadata():
         else:
             subject_name = f"이 {breed_clean}"
 
-        # 태그 리스트 생성
+        # 제목 보조 정보 (특징 또는 보호소-Issue 1)
+        sub_info = ""
+        if special_mark:
+            # 첫 번째 단어 추출 (공백이나 쉼표 기준)
+            import re
+            words = re.split(r'[ ,]', special_mark)
+            sub_info = words[0] if words[0] else ""
+        
+        # 태그
         base_tags = ["유기견", "유기묘", "입양", "보호소", "동물보호", "stray dog", "animal rescue", "adoption", "D-day", "보호기간"]
-        tags = base_tags + [breed_clean, region]
-        tags_str = ", ".join(list(set(tags))) # 중복 제거 및 콤마 구분
-
-        # 시나리오별 메타데이터 세트
-        scenarios = {
-            "D-3": {
-                "title": f"[{breed_clean}] {subject_name}에게 3일이 남았습니다",
-                "description_header": f"🚨 공공보호소 긴급 공고: 안락사까지 3일 남았습니다."
-            },
-            "D-2": {
-                "title": f"내일 모레가 마지막입니다 | {breed_clean} {region}",
-                "description_header": f"⚠️ 내일 모레면 {subject_name}를 다시 볼 수 없을지도 모릅니다."
-            },
-            "D-1": {
-                "title": f"내일입니다 | {breed_clean}",
-                "description_header": "⏳ 마지막 24시간. 기적이 필요합니다."
-            },
-            "입양결말": {
-                "title": f"가족을 찾았습니다 🐾 | {breed_clean}",
-                "description_header": f"🎉 행복한 소식! 드디어 {subject_name}가 평생 가족을 만났습니다."
-            },
-            "안락사결말": {
-                "title": f"{breed_clean} | {end_date}",
-                "description_header": f"🕯️ {subject_name}가 하늘의 별이 되었습니다. 기억해주세요."
-            }
-        }
+        tags = list(set(base_tags + [breed_clean, region, care_nm]))
+        tags_str = ", ".join(tags)
 
         animal_metadata = {}
         
-        for key, value in scenarios.items():
-            # 경과일 계산 (보호기간 10일 기준)
+        # 시나리오 정의
+        scenarios = {
+            "D-3": {"title_base": f"[{breed_clean}] {subject_name}에게 3일이 남았습니다"},
+            "D-2": {"title_base": f"내일 모레가 마지막입니다 | {breed_clean} {region}"},
+            "D-1": {"title_base": f"내일입니다 | {breed_clean}"},
+            "입양결말": {"title_base": f"가족을 찾았습니다 🐾 | {breed_clean}"},
+            "안락사결말": {"title_base": f"{breed_clean} | {end_date}"}
+        }
+
+        for key, val in scenarios.items():
+            # 중복 방지 제목 생성
+            final_title = val["title_base"]
+            if sub_info:
+                # 특징 추가 (방법 2)
+                if "|" in final_title:
+                    parts = final_title.split("|")
+                    final_title = f"{parts[0]}| {sub_info} {parts[1].strip()}"
+                else:
+                    final_title = f"{final_title} ({sub_info})"
+            
+            # 보호소 및 중복 순번 체크 (방법 1)
+            base_key = f"{key}_{final_title}"
+            if base_key in used_titles:
+                used_titles[base_key] += 1
+                final_title = f"{final_title} | {care_nm} #{used_titles[base_key]}"
+            else:
+                used_titles[base_key] = 1
+
             elapsed_days = 10 - d_day if isinstance(d_day, int) else "알 수 없음"
             
-            # 설명 구성
+            # 문의처 정보 (Issue 3)
+            contact_info = f"{care_nm} {care_tel}".strip() or location_full
+
             description = f"""본 콘텐츠는 국가동물보호정보시스템 공공데이터를 기반으로 제작됩니다.
 
 {subject_name}는 {region} 보호소에 있습니다.
@@ -88,7 +103,7 @@ def generate_metadata():
 {subject_name}는 진짜입니다.
 
 D-3 영상부터 보시려면 → (재생목록 링크 준비중)
-입양 문의 → {location_full} (문의 시 공고번호 {animal_id}를 말씀해주세요)
+입양 문의 → {contact_info} (문의 시 공고번호 {animal_id}를 말씀해주세요)
 
 매일 새로운 강아지와 고양이들이 보호소에 들어옵니다.
 보호기간은 10일입니다.
@@ -101,18 +116,32 @@ D-3 영상부터 보시려면 → (재생목록 링크 준비중)
 #유기동물 #사지말고입양하세요 #공공보호소 #입양공고 #shorts"""
 
             animal_metadata[key] = {
-                "title": value["title"],
+                "title": final_title,
                 "description": description,
                 "tags": tags
             }
 
         metadata_result[animal_id] = animal_metadata
 
-    # 결과 저장
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(metadata_result, f, ensure_ascii=False, indent=4)
 
-    print(f"성공: {len(animals)}마리의 동물에 대한 메타데이터가 '{output_file}'에 저장되었습니다.")
+    print("================================")
+    print(f"[09:04] generate_metadata.py 실행")
+    print("================================")
+    if metadata_result:
+        print("- 각 동물별 제목:")
+        for aid, meta in metadata_result.items():
+            d_key = "D-1" if "D-1" in meta else ("D-2" if "D-2" in meta else "D-3")
+            print(f"  * {aid}: {meta.get(d_key, {}).get('title', 'N/A')}")
+        
+        first_aid = list(metadata_result.keys())[0]
+        first_dkey = list(metadata_result[first_aid].keys())[0]
+        print(f"\n- 설명란 예시 (ID: {first_aid}):")
+        print("--------------------------------")
+        print(metadata_result[first_aid][first_dkey]["description"])
+        print("--------------------------------")
+    print("")
 
 if __name__ == "__main__":
     generate_metadata()

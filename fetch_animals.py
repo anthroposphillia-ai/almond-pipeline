@@ -58,13 +58,34 @@ def fetch_abandoned_animals():
                 
                 # 오늘 기준으로 3일 이내 (D-day 0, 1, 2, 3)
                 if 0 <= d_day <= 3:
+                    # 나이 계산 로직 (Issue 4)
+                    age_str = animal.get("age", "")
+                    current_year = datetime.now().year
+                    calculated_age = "미상"
+                    
+                    if age_str:
+                        # 2024(년생) 형태 추출 시도
+                        import re
+                        match = re.search(r'(\d{4})', age_str)
+                        if match:
+                            birth_year = int(match.group(1))
+                            calculated_age = f"{current_year - birth_year}살 추정"
+                        elif "어린" in age_str or "60일" in age_str:
+                            calculated_age = "1살 미만 추정"
+                        else:
+                            calculated_age = age_str # 기존 값 유지
+
                     animal_info = {
                         "id": animal.get("desertionNo"),
                         "사진URL": animal.get("popfile1") or animal.get("popfile"),
-                        "품종": animal.get("kindFullNm") or animal.get("kindCd"),
-                        "나이": animal.get("age"),
+                        "품종": animal.get("kindCd"),
+                        "나이": calculated_age,
                         "성별": animal.get("sexCd"),
-                        "보호소위치": animal.get("careAddr"),
+                        "보호소명": animal.get("careNm"),
+                        "보호소전화번호": animal.get("careTel"),
+                        "보호소주소": animal.get("careAddr"),
+                        "특징": animal.get("specialMark"),
+                        "색상": animal.get("colorCd"),
                         "보호종료일": str(notice_edt_str),
                         "D-day": d_day
                     }
@@ -76,8 +97,17 @@ def fetch_abandoned_animals():
         with open("animals.json", "w", encoding="utf-8") as f:
             json.dump(filtered_animals, f, ensure_ascii=False, indent=4)
 
-        print(f"\n작업 완료! 조건(보호 종료일 3일 이내)에 맞는 동물을 총 {len(filtered_animals)}마리 찾았습니다.")
-        print("결과는 'animals.json' 파일에 저장되었습니다.")
+        print("================================")
+        print(f"[09:01] fetch_animals.py 실행")
+        print("================================")
+        print(f"- 수집된 동물 수: {len(filtered_animals)}마리")
+        if filtered_animals:
+            print("- 동물 목록:")
+            for a in filtered_animals:
+                loc = a.get("보호소주소", "").split()[0]
+                print(f"  * {a['id']}, {a['품종']}, {loc}, D-{a['D-day']}")
+        print("- animals.json 저장 완료")
+        print("")
 
     except Exception as e:
         print(f"오류 발생: {e}")

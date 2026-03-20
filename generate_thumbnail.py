@@ -123,10 +123,22 @@ def generate_thumbnails():
             # 5. 저장
             output_path = os.path.join(output_dir, f"{animal_id}_{d_day}.jpg")
             img.save(output_path, "JPEG", quality=90)
-            print(f"[{animal_id}] 썸네일 생성 완료: {output_path}")
             
         except Exception as e:
             print(f"[{animal_id}] 썸네일 생성 중 오류: {e}")
+
+    print("================================")
+    print(f"[09:03] generate_thumbnail.py 실행")
+    print("================================")
+    print(f"- 생성된 썸네일 수: {len(videos_data)}개")
+    if videos_data:
+        print("- 저장 경로 목록:")
+        for v in videos_data:
+            aid = v.get("animal_id")
+            dd = v.get("D-day")
+            path = os.path.join(output_dir, f"{aid}_{dd}.jpg")
+            print(f"  * {path}")
+    print("")
 
 if __name__ == "__main__":
     generate_thumbnails()
