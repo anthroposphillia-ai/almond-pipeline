@@ -3,39 +3,126 @@ import os
 import random
 from datetime import datetime
 
+def detect_animal_type(breed, special_mark=""):
+    """
+    품종 문자열에서 개/고양이를 판별합니다.
+    '[개] 믹스견' 형태뿐 아니라, 코드값만 올 경우 특징 텍스트에서도 유추합니다.
+    """
+    breed_lower = breed.lower()
+
+    # 1차: 품종 텍스트에서 직접 판별
+    dog_keywords = ["개", "견", "dog", "테리어", "리트리버", "셰퍼드", "불독", "푸들", "비글", "말티즈", "시추", "치와와", "진돗", "풍산", "삽살"]
+    cat_keywords = ["고양이", "묘", "cat", "페르시안", "러시안", "스코티시", "먼치킨", "벵갈", "샴", "코리안숏헤어", "터키시", "랙돌"]
+
+    for kw in dog_keywords:
+        if kw in breed_lower:
+            return "dog"
+    for kw in cat_keywords:
+        if kw in breed_lower:
+            return "cat"
+
+    # 2차: 특징 텍스트에서 유추
+    if special_mark:
+        dog_hints = ["강아지", "개", "짖", "산책", "지켜", "경비", "물지"]
+        cat_hints = ["고양이", "묘", "그루밍", "캣", "야옹"]
+        for hint in dog_hints:
+            if hint in special_mark:
+                return "dog"
+        for hint in cat_hints:
+            if hint in special_mark:
+                return "cat"
+
+    # 판별 불가 시 기본값
+    return "animal"
+
 def translate_features(color, special_mark):
     """
     한글 색상 및 특징 데이터를 영어 프롬프트 키워드로 변환합니다.
+    더 넓은 키워드 매핑으로 다양한 특징을 빠짐없이 반영합니다.
     """
     color_map = {
-        "흰색": "white", "검정색": "black", "갈색": "brown", "노란색": "yellow", 
-        "회색": "grey", "검정": "black", "하얀": "white", "노랑": "yellow"
+        "흰색": "white", "검정색": "black", "갈색": "brown", "노란색": "golden yellow",
+        "회색": "grey", "검정": "black", "하얀": "white", "노랑": "golden yellow",
+        "초코": "chocolate brown", "크림": "cream", "베이지": "beige",
+        "황색": "tawny", "적갈색": "reddish brown", "빨강": "reddish",
+        "삼색": "tricolor", "얼룩": "spotted", "점박이": "spotted",
+        "줄무늬": "striped", "치즈": "orange tabby", "턱시도": "tuxedo pattern"
     }
-    
+
     keywords = []
-    
-    # 색상 반영
+
+    # 색상 반영 (복수 색상 가능)
     for kr, en in color_map.items():
         if kr in color:
             keywords.append(f"{en} fur")
-            break
-            
-    # 주요 특징 키워드 추출
+
+    # 주요 특징 키워드 추출 (확장된 매핑)
     feature_map = {
+        # 외형
         "목줄": "wearing a collar",
         "코": "distinctive nose",
-        "사람을 좋아": "friendly eyes",
-        "순함": "gentle expression",
-        "겁이 많": "nervous posture",
-        "활발": "energetic movement",
         "퐁실": "fluffy fur",
-        "해맑": "bright expression"
+        "곱슬": "curly fur",
+        "단모": "short-haired",
+        "장모": "long-haired",
+        "큰 눈": "large expressive eyes",
+        "접힌 귀": "folded ears",
+        "쫑긋": "perked-up ears",
+        "짧은 꼬리": "short tail",
+        "긴 꼬리": "long tail",
+        "단미": "docked tail",
+        "큰 체구": "large build",
+        "작은 체구": "small build",
+        "마른": "thin build",
+        "통통": "chubby build",
+        # 성격 및 행동
+        "사람을 좋아": "friendly and people-loving expression",
+        "사람을 잘 따": "trusting and affectionate towards people",
+        "순함": "gentle expression",
+        "순한": "gentle expression",
+        "착하": "docile and gentle demeanor",
+        "겁이 많": "nervous posture, timid eyes",
+        "겁 많": "nervous posture, timid eyes",
+        "무서워": "fearful and cautious posture",
+        "활발": "energetic movement",
+        "해맑": "bright cheerful expression",
+        "온순": "calm and mild-mannered",
+        "경계": "alert and watchful",
+        "지켜": "watchful guardian stance, alert and protective posture",
+        "호기심": "curious expression",
+        "장난": "playful pose",
+        "얌전": "quiet and well-behaved",
+        "낯가": "shy around strangers",
+        "쉼 없이": "restless movement",
+        "귀여": "adorable appearance",
+        # 건강/상태
+        "건강": "healthy-looking",
+        "피부병": "skin condition visible",
+        "눈병": "eye condition visible",
+        "절뚝": "limping gait",
+        "다리를 절": "limping gait",
+        "임신": "visibly pregnant",
+        "새끼": "with puppies",
+        "수술": "surgery scar visible"
     }
-    
+
+    matched_features = []
     for kr, en in feature_map.items():
         if kr in special_mark:
-            keywords.append(en)
-            
+            matched_features.append(en)
+
+    # 매칭된 특징이 없으면 원본 특징 텍스트의 핵심만 간략히 기술
+    if not matched_features and special_mark:
+        # 기본 폴백: 원본 특징에서 자주 쓰이는 패턴 추출
+        fallback_keywords = []
+        if any(word in special_mark for word in ["강아지", "개", "견"]):
+            fallback_keywords.append("dog-like features")
+        if any(word in special_mark for word in ["고양이", "묘", "캣"]):
+            fallback_keywords.append("cat-like features")
+        fallback_keywords.append("natural appearance with character")
+        matched_features = fallback_keywords
+
+    keywords.extend(matched_features)
     return ", ".join(keywords) if keywords else "natural appearance"
 
 def generate_video_prompts():
@@ -93,9 +180,10 @@ def generate_video_prompts():
         status = animal.get("status", "waiting")
         color = animal.get("색상", "")
         special_mark = animal.get("특징", "")
-        
-        animal_type = "dog" if "개" in breed else ("cat" if "고양이" in breed else "animal")
-        
+
+        # 품종에서 개/고양이 판별 ("[개] 믹스견" 형태 또는 코드값 대응)
+        animal_type = detect_animal_type(breed, special_mark)
+
         # 개별 특징 번역 및 반영
         individual_features = translate_features(color, special_mark)
         
