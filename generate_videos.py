@@ -108,8 +108,10 @@ def batch_generate_videos(limit=1):
                 
                 newly_requested += 1
                 
-                # 폴링 시작 (최대 10분 정도 대기하도록 설정 가능하지만 여기선 단순 루프)
-                while True:
+                # 폴링 시작 (최대 10분 = 600초 대기)
+                start_time = time.time()
+                timeout = 600
+                while time.time() - start_time < timeout:
                     status, video_url = check_video_status(task_id)
                     print(f"상태: {status}...")
                     
@@ -134,6 +136,8 @@ def batch_generate_videos(limit=1):
                         break
                     
                     time.sleep(15) # 폴링 간격을 조금 늘림 (15초)
+                else:
+                    print(f"타임아웃 에러: 10분 동안 영상 생성이 완료되지 않았습니다. (ID: {task_id})")
 
             except requests.exceptions.HTTPError as e:
                 print(f"API 요청 에러 발생: {e.response.status_code}")

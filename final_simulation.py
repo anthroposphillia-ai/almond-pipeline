@@ -12,7 +12,8 @@ if sys.platform == "win32":
 def run_step(command):
     try:
         # errors='replace'를 추가하여 인코딩 오류 시 프로그램 중단 방지
-        result = subprocess.run(command, shell=True, capture_output=True, text=True, encoding='utf-8', errors='replace')
+        # 보안(명령어 인젝션 방지)을 위해 shell=True 제거하고 리스트 형태로 전달
+        result = subprocess.run(command.split(), capture_output=True, text=True, encoding='utf-8', errors='replace')
         if result.stdout:
             print(result.stdout)
         if result.stderr:

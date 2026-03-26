@@ -1,6 +1,7 @@
 import os
 import json
 import requests
+import re
 from datetime import datetime
 from dotenv import load_dotenv
 
@@ -65,7 +66,6 @@ def fetch_abandoned_animals():
                     
                     if age_str:
                         # 2024(년생) 형태 추출 시도
-                        import re
                         match = re.search(r'(\d{4})', age_str)
                         if match:
                             birth_year = int(match.group(1))

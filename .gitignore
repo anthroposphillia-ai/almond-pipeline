@@ -4,7 +4,6 @@
 # Google API Secrets
 client_secrets.json
 token.pickle
-client_secrets.json.json
 
 # Media
 final_videos/
@@ -19,6 +18,14 @@ monthly_summary_log.txt
 
 # Data
 status_log.json
+animals.json
+animal_names.json
+ended_animals.json
+metadata.json
+prompts.json
+replied_comments.json
+videos.json
+youtube_urls.json
 
 # Python
 __pycache__/

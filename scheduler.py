@@ -88,8 +88,7 @@ def job():
     else:
         log("=== [전체 파이프라인 성공적으로 완료됨] ===")
 
-# 매일 오전 08:50에 상태 추적 실행
-schedule.every().day.at("08:50").do(lambda: run_script("track_animals.py"))
+# 08:50 상태 추적 개별 실행은 파이프라인 중복(API 낭비) 방지를 위해 제거됨
 
 # 매일 오전 09:00에 전체 파이프라인 실행 예약
 schedule.every().day.at("09:00").do(job)
