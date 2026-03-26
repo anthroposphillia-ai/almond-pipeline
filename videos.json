@@ -1,16 +1,26 @@
 [
     {
-        "animal_id": "448533202600065",
+        "animal_id": "447523202600308",
+        "video_url": "C:\\antigravity\\almond-pipeline\\dummy_videos\\sim_447523202600308.mp4",
         "D-day": 2,
-        "breed": "000072",
-        "status": "euthanized",
-        "final_path": "C:\\antigravity\\almond-pipeline\\final_videos\\final_448533202600065.mp4"
+        "breed": "000114",
+        "prompt": "A animal slowly approaching the camera, hesitant but curious, shallow depth of field, focus on the animal's interaction with the camera person, natural morning light, unscripted, authentic, no artificial poses, observational documentary style, camera as silent witness, visual storytelling without narration, emotion through observation not manipulation, natural eye blinking, subtle eye movement, not staring directly into camera, occasional glance away and return, subtle fur movement from breathing, natural coat texture, realistic fur physics, slight movement from inhale exhale, slight handheld camera shake, natural camera movement, slightly imperfect framing, documentary cinematography, uneven fluorescent lighting, slight shadows, realistic shelter lighting, imperfect light distribution, worn shelter floor, slightly dirty kennel walls, realistic worn environment, authentic shelter details, short natural movements, abrupt realistic stops and starts, no smooth artificial transitions, ambient audio: \"quiet shelter afternoon, single dog breathing close up, distant footsteps of caretaker, natural room tone, no music\", no background music, no narration, diegetic sound only, observational documentary style, slightly imperfect, authentic, this is AI-generated but the animal is real, documentary truth over visual perfection",
+        "mood_theme": "D-2: A Day of Connection.",
+        "line1": "000114입니다",
+        "line2": "내일 모레가 마지막 날입니다",
+        "is_named": false,
+        "final_path": "C:\\antigravity\\almond-pipeline\\final_videos\\final_447523202600308.mp4"
     },
     {
-        "animal_id": "447512202600284",
-        "D-day": 1,
-        "breed": "000114",
-        "status": "adopted",
-        "final_path": "C:\\antigravity\\almond-pipeline\\final_videos\\final_447512202600284.mp4"
+        "animal_id": "444461202600143",
+        "video_url": "C:\\antigravity\\almond-pipeline\\dummy_videos\\sim_444461202600143.mp4",
+        "D-day": 2,
+        "breed": "000067",
+        "prompt": "A animal slowly approaching the camera, hesitant but curious, shallow depth of field, focus on the animal's interaction with the camera person, natural morning light, unscripted, authentic, no artificial poses, observational documentary style, camera as silent witness, visual storytelling without narration, emotion through observation not manipulation, natural eye blinking, subtle eye movement, not staring directly into camera, occasional glance away and return, subtle fur movement from breathing, natural coat texture, realistic fur physics, slight movement from inhale exhale, slight handheld camera shake, natural camera movement, slightly imperfect framing, documentary cinematography, uneven fluorescent lighting, slight shadows, realistic shelter lighting, imperfect light distribution, worn shelter floor, slightly dirty kennel walls, realistic worn environment, authentic shelter details, short natural movements, abrupt realistic stops and starts, no smooth artificial transitions, ambient audio: \"quiet shelter afternoon, single dog breathing close up, distant footsteps of caretaker, natural room tone, no music\", no background music, no narration, diegetic sound only, observational documentary style, slightly imperfect, authentic, this is AI-generated but the animal is real, documentary truth over visual perfection",
+        "mood_theme": "D-2: A Day of Connection.",
+        "line1": "000067입니다",
+        "line2": "내일 모레가 마지막 날입니다",
+        "is_named": false,
+        "final_path": "C:\\antigravity\\almond-pipeline\\final_videos\\final_444461202600143.mp4"
     }
 ]
