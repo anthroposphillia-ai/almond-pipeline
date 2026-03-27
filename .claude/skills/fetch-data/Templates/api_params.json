@@ -1,0 +1,50 @@
+{
+  "_comment": "공공데이터포털 유기동물 공고 API 기본 파라미터 템플릿",
+  "base_url": "https://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic",
+  "default_params": {
+    "numOfRows": 100,
+    "pageNo": 1,
+    "_type": "json",
+    "state": "notice"
+  },
+  "optional_filters": {
+    "upkind": {
+      "description": "축종 코드",
+      "values": {"417000": "개", "422400": "고양이", "429900": "기타"}
+    },
+    "kind": {
+      "description": "품종 코드 (upkind 지정 후 사용)",
+      "example": "000063"
+    },
+    "upr_cd": {
+      "description": "시도 코드",
+      "example": "6110000 (서울특별시)"
+    },
+    "org_cd": {
+      "description": "시군구 코드 (upr_cd 지정 후 사용)",
+      "example": "3220000"
+    },
+    "care_reg_no": {
+      "description": "보호소 등록번호"
+    },
+    "state": {
+      "description": "공고 상태",
+      "values": {"notice": "공고중", "protect": "보호중"}
+    },
+    "bgnde": {
+      "description": "공고 시작일 (YYYYMMDD)",
+      "example": "20260301"
+    },
+    "endde": {
+      "description": "공고 종료일 (YYYYMMDD)",
+      "example": "20260331"
+    },
+    "neuter_yn": {
+      "description": "중성화 여부",
+      "values": {"Y": "완료", "N": "미완료", "U": "미상"}
+    }
+  },
+  "required_env": {
+    "ANIMAL_API_KEY": "공공데이터포털 API 인증키 (환경변수 필수 — 하드코딩 금지)"
+  }
+}

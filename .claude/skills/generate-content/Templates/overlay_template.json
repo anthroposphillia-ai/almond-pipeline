@@ -1,0 +1,57 @@
+{
+  "_comment": "영상 오버레이 텍스트 레이어 템플릿. 모든 변수는 generate_caption.py에서 치환됨.",
+  "layers": {
+    "d_day_badge": {
+      "position": "top_left",
+      "text": "{D_DAY_BADGE}",
+      "style": {
+        "font": "NotoSansKR-Bold",
+        "size": 28,
+        "color": "#FFFFFF",
+        "background": "rgba(220, 53, 69, 0.85)",
+        "padding": "8px 16px",
+        "border_radius": 8
+      }
+    },
+    "title": {
+      "position": "center_bottom_third",
+      "text": "{BREED} · {SEX} · {AGE}",
+      "style": {
+        "font": "NotoSansKR-Bold",
+        "size": 36,
+        "color": "#FFFFFF",
+        "shadow": "0 2px 8px rgba(0,0,0,0.8)"
+      }
+    },
+    "shelter_info": {
+      "position": "bottom",
+      "text": "{CARE_NM} | 공고 {NOTICE_NO}",
+      "style": {
+        "font": "NotoSansKR-Regular",
+        "size": 20,
+        "color": "#FFFFFF",
+        "background": "rgba(0,0,0,0.6)",
+        "padding": "6px 12px"
+      }
+    },
+    "watermark": {
+      "position": "bottom_right",
+      "text": "AI-generated video | 실제 유기동물 정보 기반",
+      "removable": false,
+      "_note": "Manifesto §2: 제거 불가 필수 레이어",
+      "style": {
+        "font": "NotoSansKR-Light",
+        "size": 14,
+        "color": "rgba(255,255,255,0.7)"
+      }
+    }
+  },
+  "animation": {
+    "kenburns": {
+      "enabled": true,
+      "zoom_from": 1.0,
+      "zoom_to": 1.1,
+      "duration_sec": 15
+    }
+  }
+}

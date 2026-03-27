@@ -1,0 +1,21 @@
+# Almond Pipeline — 해시태그 템플릿
+# Manifesto §1: 저자극성 원칙 준수
+# 금지: 불쌍, 살려, 제발 등 감정 호소 태그
+
+## 공통 태그 (모든 게시물에 포함)
+#유기동물 #입양 #보호소 #유기동물입양 #동물보호
+#abandonedanimals #adopt #rescue #shelter #petadoption
+
+## 개 태그
+#유기견 #강아지입양 #강아지보호소 #dog #adoptdontshop
+
+## 고양이 태그
+#유기묘 #고양이입양 #고양이보호소 #cat #catsofinstagram
+
+## AI 투명성 태그 (Manifesto §2)
+#AIgenerated #AI영상 #공공데이터 #데이터기반
+
+## 지역별 태그 (careAddr 기반으로 동적 추가)
+# 예시:
+# 서울 → #서울유기동물 #서울보호소
+# 경기 → #경기유기동물 #경기보호소

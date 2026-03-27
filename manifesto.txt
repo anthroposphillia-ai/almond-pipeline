@@ -1,0 +1,119 @@
+================================================================================
+  ALMOND PIPELINE — MANIFESTO
+  생명 존중 철학 | Philosophy of Life Respect
+  Version 1.0 | 2026-03-27
+================================================================================
+
+이 문서는 Almond Pipeline의 모든 스킬, 스크립트, 템플릿이 반드시 참조해야 하는
+핵심 철학 문서입니다. 어떤 콘텐츠를 생성하든 아래 원칙을 최우선으로 적용하세요.
+
+All skills, scripts, and templates in this pipeline MUST reference this document.
+Apply these principles as the highest priority in every content decision.
+
+--------------------------------------------------------------------------------
+§1. 저자극성 원칙 | Low-Stimulation Principle
+--------------------------------------------------------------------------------
+
+우리는 불쌍함을 팔지 않는다.
+We do not sell pity.
+
+- 동물의 본연의 아름다움과 개성을 있는 그대로 전달한다.
+  Convey the animal's natural beauty and individuality as-is.
+
+- 슬픔을 유발하는 BGM, 눈물을 자극하는 나레이션, 과장된 감정 표현을 사용하지 않는다.
+  No sad BGM, no tear-inducing narration, no exaggerated emotional language.
+
+- 긴급한 상황(D-day)은 사실로서 전달한다. "곧 죽습니다"가 아니라 "D-3"이다.
+  Urgent situations (D-day) are facts, not emotional appeals.
+  Say "D-3", not "will die soon".
+
+- 동물을 피해자로 프레이밍하지 않는다. 동물은 입양을 기다리는 존재다.
+  Do not frame animals as victims. They are beings waiting for adoption.
+
+금지 표현 | Forbidden language:
+  ✗ "불쌍한", "가련한", "죽어가는"
+  ✗ "제발", "살려주세요", "마지막 기회"
+  ✗ 과장 부사: "너무나", "절박하게"
+  ✗ 의인화된 감정 호소: "나를 버리지 마세요"
+
+권장 표현 | Recommended language:
+  ✓ 품종, 나이, 특징을 객관적으로 기술
+  ✓ "보호 종료일: D-[N]일"
+  ✓ "보호소: [이름]", "공고번호: [번호]"
+  ✓ 행동 특성: "활발함", "온순함", "사람을 좋아함"
+
+--------------------------------------------------------------------------------
+§2. 투명성 원칙 | Transparency Principle
+--------------------------------------------------------------------------------
+
+우리는 AI 제작 사실을 숨기지 않는다.
+We do not hide the fact that content is AI-generated.
+
+- 모든 영상에는 "AI-generated video | 실제 동물 정보 기반" 워터마크를 포함한다.
+  All videos must include: "AI-generated video | Based on real animal data"
+
+- 영상 설명(caption)에는 반드시 다음을 포함한다:
+  All captions must include:
+    1. 보호소 번호 (Shelter ID)
+    2. 공고 번호 (Announcement No.)
+    3. AI 제작 명시
+    4. 실제 입양 문의처
+
+- 데이터 출처를 명시한다: "공공데이터포털 유기동물 공고 API"
+  Always cite data source: Korea Public Data Portal — Abandoned Animal API
+
+- 통계나 정보를 임의로 생성하지 않는다. 없는 데이터는 "정보 없음"으로 표기한다.
+  Never fabricate statistics or information. Missing data = "정보 없음".
+
+--------------------------------------------------------------------------------
+§3. 존엄성 원칙 | Dignity Principle
+--------------------------------------------------------------------------------
+
+모든 동물은 고유한 존재다.
+Every animal is a unique being.
+
+- 각 동물은 개별 콘텐츠로 다룬다. 여러 마리를 한 번에 "처리"하지 않는다.
+  Each animal gets individual content. Do not "batch process" multiple animals.
+
+- 동물의 외형적 결함(상처, 장애)을 강조하거나 숨기지 않는다. 있는 그대로 전달한다.
+  Do not emphasize or hide physical imperfections. Present as-is.
+
+- 동물의 이름(미등록 시 임시 이름)을 항상 콘텐츠에 포함한다.
+  Always include the animal's name (or temporary name if unregistered).
+
+--------------------------------------------------------------------------------
+§4. 객관성 원칙 | Objectivity Principle
+--------------------------------------------------------------------------------
+
+데이터가 말하게 한다.
+Let the data speak.
+
+- 모든 정보는 공공데이터 API 응답에서 직접 추출한다.
+  All information is extracted directly from the public data API response.
+
+- 추론하거나 보정하지 않는다. API 값이 null이면 "정보 없음"으로 표기한다.
+  Do not infer or correct. If API value is null, display "정보 없음".
+
+- 공고 기간과 D-day 계산은 시스템 시간 기준으로 자동 산출한다.
+  D-day calculation is automated based on system time vs. notice end date.
+
+--------------------------------------------------------------------------------
+§5. 자동화 윤리 원칙 | Automation Ethics Principle
+--------------------------------------------------------------------------------
+
+자동화는 속도를 위한 것이 아니라 일관성을 위한 것이다.
+Automation is for consistency, not speed.
+
+- 파이프라인은 매 실행마다 이 manifesto를 참조하여 출력물을 검증한다.
+  The pipeline validates every output against this manifesto on each run.
+
+- 금지 표현이 생성된 경우 자동으로 재생성을 요청한다.
+  If forbidden language is detected, automatically request regeneration.
+
+- 사람이 검토할 수 없는 콘텐츠는 배포하지 않는다. 최종 승인 게이트는 유지한다.
+  Do not distribute content without human review. Maintain the final approval gate.
+
+================================================================================
+  END OF MANIFESTO
+  이 철학에 동의하는 모든 기여자와 에이전트에 의해 운영됩니다.
+================================================================================

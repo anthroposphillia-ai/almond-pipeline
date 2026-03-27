@@ -1,0 +1,32 @@
+{
+  "_comment": "영상 렌더링 파라미터 템플릿",
+  "platforms": {
+    "instagram_reels": {
+      "width": 1080, "height": 1920, "fps": 30, "duration": 15,
+      "codec": "libx264", "preset": "fast", "crf": 23,
+      "max_file_mb": 100
+    },
+    "youtube_shorts": {
+      "width": 1080, "height": 1920, "fps": 30, "duration": 30,
+      "codec": "libx264", "preset": "fast", "crf": 23,
+      "max_file_mb": 256
+    },
+    "tiktok": {
+      "width": 1080, "height": 1920, "fps": 30, "duration": 15,
+      "codec": "libx264", "preset": "fast", "crf": 23,
+      "max_file_mb": 72
+    }
+  },
+  "kenburns": {
+    "zoom_from": 1.0,
+    "zoom_to": 1.1,
+    "direction": "center"
+  },
+  "watermark": {
+    "required": true,
+    "removable": false,
+    "text": "AI-generated video | 실제 유기동물 정보 기반",
+    "position": "bottom_right",
+    "opacity": 0.7
+  }
+}
