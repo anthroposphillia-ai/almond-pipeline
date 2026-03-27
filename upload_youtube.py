@@ -1,12 +1,21 @@
 import os
 import json
 import pickle
+import sys
+import io
 import google.oauth2.credentials
 import google_auth_oauthlib.flow
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
+
+# 윈도우 터미널(CP949)에서도 UTF-8 출력을 안전하게 하기 위해 설정
+if sys.platform == "win32":
+    try:
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    except:
+        pass
 
 # 유튜브 API 권한 범위 (업로드 권한)
 SCOPES = ['https://www.googleapis.com/auth/youtube.upload']
@@ -30,7 +39,23 @@ def get_authenticated_service():
                 return None
             
             flow = InstalledAppFlow.from_client_secrets_file('client_secrets.json', SCOPES)
-            creds = flow.run_local_server(port=0)
+            
+            # 브라우저를 띄울 수 있는 환경인지 확인 후 실행
+            try:
+                # 일반적인 환경에서는 로컬 서버 실행
+                creds = flow.run_local_server(port=0, open_browser=True)
+            except Exception as e:
+                # 브라우저 실행 불가(서버/에이전트) 환경일 경우 수동 인증 URL 제공
+                print(f"\n[인증 알림] 브라우저를 자동으로 열 수 없습니다: {e}")
+                print("아래 URL을 복사하여 브라우저에서 인증한 후, 리다이렉트된 주소를 터미널에 입력해야 할 수 있습니다.")
+                print("주의: 이 환경에서는 'flow.run_local_server'가 작동하지 않을 수 있으므로 원격 세션 로그인이 필요합니다.")
+                
+                # 가이드 출력
+                auth_url, _ = flow.authorization_url(prompt='consent')
+                print(f"\n👉 인증 URL: {auth_url}\n")
+                
+                # 로컬 환경이 아닌 경우를 위해 한번 더 시도 (콘솔 입력 방식은 구 버전에서만 지원되므로 예외 대기)
+                creds = flow.run_local_server(port=0, open_browser=False)
             
         # 다음 실행을 위해 인증 정보를 저장합니다.
         with open('token.pickle', 'wb') as token:

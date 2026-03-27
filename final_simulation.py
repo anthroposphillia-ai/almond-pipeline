@@ -5,9 +5,12 @@ import time
 import sys
 import io
 
-# 윈도우 터미널(CP949)에서도 UTF-8(이모지 등) 출력을 안전하게 하기 위해 설정
+# 윈도우 터미널(CP949)에서도 UTF-8 출력을 안전하게 하기 위해 설정
 if sys.platform == "win32":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    try:
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    except:
+        pass
 
 def run_step(command):
     try:
@@ -26,9 +29,9 @@ def final_sim():
     run_step("python track_animals.py")
 
     # 1. manifesto.txt 출력 ([09:00])
-    print("================================")
+    print("-" * 32)
     print("[09:00] 매니페스토 출력")
-    print("================================")
+    print("-" * 32)
     if os.path.exists("manifesto.txt"):
         with open("manifesto.txt", "r", encoding="utf-8") as f:
             print(f.read())
@@ -68,9 +71,9 @@ def final_sim():
     run_step("python upload_twitter.py")
 
     # 최종 요약
-    print("================================")
+    print("-" * 32)
     print("최종 요약")
-    print("================================")
+    print("-" * 32)
     
     # 데이터 집계
     videos_file = "videos.json"

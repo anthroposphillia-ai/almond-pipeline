@@ -3,9 +3,12 @@ import json
 import sys
 import io
 
-# 윈도우 터미널(CP949)에서도 UTF-8(이모지 등) 출력을 안전하게 하기 위해 설정
+# 윈도우 터미널(CP949)에서도 UTF-8 출력을 안전하게 하기 위해 설정
 if sys.platform == "win32":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    try:
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    except:
+        pass
 
 def simulate_upload():
     input_file = "videos.json"
@@ -130,9 +133,9 @@ def simulate_upload():
     with open("youtube_urls.json", "w", encoding="utf-8") as f:
         json.dump(youtube_urls, f, ensure_ascii=False, indent=4)
 
-    print("================================")
+    print("-" * 32)
     print(f"[09:07] upload_youtube.py 실행 (시뮬레이션)")
-    print("================================")
+    print("-" * 32)
     print(f"- 총 {upload_count}개의 영상 업로드 예정 목록을 확인했습니다.")
     print("- youtube_urls.json 저장 완료")
     print("")
