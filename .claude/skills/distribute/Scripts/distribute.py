@@ -11,6 +11,8 @@ import os
 from datetime import datetime
 from pathlib import Path
 
+from upload_youtube import upload_youtube_shorts
+
 LOG_PATH = Path(__file__).parent / "distributed_log.json"
 OUTPUT_DIR = Path(__file__).parent / "output"
 OUTPUT_DIR.mkdir(exist_ok=True)
@@ -90,12 +92,8 @@ def upload_instagram(video_path: str, caption: str) -> dict:
 
 
 def upload_youtube(video_path: str, title: str, description: str) -> dict:
-    """YouTube Data API v3 업로드 (stub)."""
-    api_key = os.environ.get("YOUTUBE_API_KEY")
-    if not api_key:
-        raise EnvironmentError("YOUTUBE_API_KEY 환경변수 필요")
-    print(f"[YouTube] 업로드 시뮬레이션: {video_path}")
-    return {"status": "success", "platform": "youtube", "video_id": "STUB_ID", "url": "https://youtube.com/shorts/STUB"}
+    """YouTube Shorts 실제 업로드 (OAuth2)."""
+    return upload_youtube_shorts(video_path, title, description)
 
 
 def upload_tiktok(video_path: str, description: str) -> dict:
