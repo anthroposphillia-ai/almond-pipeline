@@ -15,8 +15,8 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
-CLIENT_SECRETS = Path(__file__).parents[3] / "client_secrets.json"
-TOKEN_PATH = Path(__file__).parents[3] / "token.pickle"
+CLIENT_SECRETS = Path(__file__).parents[4] / "client_secrets.json"
+TOKEN_PATH = Path(__file__).parents[4] / "token.pickle"
 
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 
